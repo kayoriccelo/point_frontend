@@ -1,16 +1,18 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
-    content: {
-        flexGrow: 1,
-        height: '94vh',
+    root: {
+        height: '92%',
+        width: '92%',
         overflow: 'auto',
+        padding: '2%',
     },
-    appBarSpacer: theme.mixins.toolbar,
-    container: {
-        paddingTop: theme.spacing(4),
-        paddingBottom: theme.spacing(4),
-    }
+    card: {
+        height: 'calc(90vh - 120px)',
+        width: '100%',
+        
+   },
+   appBarSpacer: theme.mixins.toolbar,
 }));
 
 export default useStyles;
