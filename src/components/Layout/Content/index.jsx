@@ -1,6 +1,6 @@
 import React from 'react';
-import { Container, Grid } from '@material-ui/core';
-import { Switch } from 'react-router-dom';
+import { Grid, Card } from '@material-ui/core';
+import { Switch, Redirect } from 'react-router-dom';
 
 import useStyles from './styles';
 import { routes } from '../../../routes';
@@ -12,20 +12,21 @@ export default function Content() {
     const classes = useStyles();
 
     return (
-        <>
-            <main className={classes.content}>
-                <div className={classes.appBarSpacer} />
-                <Container maxWidth="lg" className={classes.container}>
-                    <Grid container>
+        <main className={classes.root}>
+            <div className={classes.appBarSpacer} />
+            <Grid container spacing={3}>
+                <Grid item xs={12}>
+                    <div className={classes.card}>
                         <Switch>
                             {routes.map(route => {
                                 return <PrivateRoute {...route} />
                             })}
+                            <Redirect from="/" to="/dashboard" />
                         </Switch>
-                    </Grid>
-                </Container>
+                    </div>
+                </Grid>
                 <Footer />
-            </main>
-        </>
+            </Grid>
+        </main>
     );
 };

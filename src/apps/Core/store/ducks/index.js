@@ -2,6 +2,18 @@ import api from '../../../../services/api';
 import { showMessage } from '../../../../components/Message/store/ducks';
 
 
+export function getListDefault(search = '', model, type) {
+    search = search !== '' ? `?search=${search}` : '';
+
+    return dispatch => {
+        return api.get(`api/${model}${search}`).then(res => {
+            dispatch({ type, payload: res.data.results });
+        }, error => {
+            dispatch(showMessage({ open: true, message: 'Unable to list items.', variant: 'error' }));
+        });
+    };
+};
+
 export function loadDefault(id, model, type) {
     return dispatch => {
         return api.get(`api/${model}?id=${id}`).then(res => {
@@ -22,6 +34,16 @@ export function saveDefault(instance, model, type, history, path) {
             history.push(path);
         }, error => {
             dispatch(showMessage({ open: true, message: 'Unable to save record.', variant: 'error' }));
+        });
+    };
+};
+
+export function deleteDefault(id, model) {
+    return dispatch => {
+        return api.delete(`api/${model}/${id}`).then(res => {
+            dispatch(showMessage({ open: true, message: 'Record successfully deleted.', variant: 'success' }));
+        }, error => {
+            dispatch(showMessage({ open: true, message: 'Unable to delete record.', variant: 'error' }));
         });
     };
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dashboard, ViewList, Business } from "@material-ui/icons";
+import { Dashboard, ViewList, Business, Today } from "@material-ui/icons";
 
 
 export const menus = [
@@ -17,7 +17,12 @@ export const menus = [
                 title: 'Company',
                 path: '/registration/company',
                 icon: (<Business />)
-            }
+            },
+            {
+                title: 'Journey',
+                path: '/registration/journey',
+                icon: (<Today />)
+            },
         ]
     },
 ];
