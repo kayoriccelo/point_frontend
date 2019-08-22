@@ -1,7 +1,9 @@
 import React from 'react';
-import { Container, Grid, Paper } from '@material-ui/core';
+import { Container, Grid } from '@material-ui/core';
+import { Switch, Route } from 'react-router-dom';
 
 import useStyles from './styles';
+import { routes } from '../../../routes';
 
 
 export default function Content() {
@@ -12,9 +14,11 @@ export default function Content() {
             <div className={classes.appBarSpacer} />
             <Container maxWidth="lg" className={classes.container}>
                 <Grid container spacing={3}>
-                    <Grid item xs={12} md={8} lg={9}>
-                        <Paper> Content Teste Item </Paper>
-                    </Grid>
+                    <Switch>
+                        {routes.map(route => {
+                            return <Route {...route}/>
+                        })}
+                    </Switch>
                 </Grid>
             </Container>
         </main>
