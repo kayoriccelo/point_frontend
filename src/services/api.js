@@ -1,4 +1,5 @@
 import axios from 'axios';
+import axios2 from 'axios';
 
 axios.interceptors.request.use(config => {
     config.baseURL = `http://127.0.0.1:8000`;
@@ -35,5 +36,14 @@ axios.interceptors.response.use(
         return Promise.reject(error);
     }
 );
+
+axios2.interceptors.request.use(config => {
+    config.baseURL = `http://127.0.0.1:8000`;
+    return config;
+}, error => {
+    return Promise.reject(error);
+});
+
+export { axios2 as apiNotToken };
 
 export default axios;

@@ -3,9 +3,9 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Grid, Card, Button, Avatar } from '@material-ui/core';
 
-import { authenticate } from './store/ducks/login';
+import { authenticate } from './store/ducks';
 import useStyles from './styles';
-import { Input, InputPassword } from '../../components';
+import { Input, InputPassword, Message } from '../../components';
 
 
 const Login = ({ authenticate, history }) => {
@@ -28,14 +28,14 @@ const Login = ({ authenticate, history }) => {
                 <div style={{ paddingBottom: 20 }}>
                     <Avatar
                         aria-label="Recipe"
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6dmeVMYnb5rTJ9nxY63SqPu7u4d4WzwC4jcqmThv_h_4vDKdf" />
+                        src="https://img.lovepik.com/element/40028/3809.png_860.png" />
                 </div>
 
-                <b style={{ fontSize: 20, paddingBottom: 40 }}>Entrar no Ponto Eletrônico</b>
+                <b style={{ fontSize: 20, paddingBottom: 40 }}>Login to Electronic Point</b>
                 
-                <Input label="Usuário" value={values['username']} handleChange={handleChange('username')} />
+                <Input label="Username" value={values['username']} handleChange={handleChange('username')} />
 
-                <InputPassword />
+                <InputPassword password={values['password']} handleChange={() => handleChange('password')} />
 
                 <Button
                     variant="contained"
@@ -43,7 +43,7 @@ const Login = ({ authenticate, history }) => {
                     className={classes.button}
                     onClick={() => clickSignin()}
                 >
-                    Signin
+                    Login
                 </Button>
             </Card>
 

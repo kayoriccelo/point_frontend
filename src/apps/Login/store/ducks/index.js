@@ -1,4 +1,4 @@
-import api from '../../../../services/api';
+import { apiNotToken } from '../../../../services/api';
 
 
 export const Types = {
@@ -7,7 +7,7 @@ export const Types = {
 
 export function authenticate(username, password, history) {
     return dispatch => {
-        return api.post('api/token/', { username, password }).then(res => {
+        return apiNotToken.post('api/token/', { username, password }).then(res => {
             localStorage.setItem('access', res.data.access);
             localStorage.setItem('refresh', res.data.refresh);
 
