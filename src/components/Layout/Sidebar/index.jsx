@@ -1,12 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import clsx from 'clsx';
 import { Drawer, Divider, List, IconButton } from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 
 import useStyles from './styles';
+import { setOpenBar } from './store/ducks';
 
 
-export default function Header({ mainListItems, secondaryListItems, openBar, setOpenBar }) {
+export const Sidebar = ({ openBar, setOpenBar }) => {
     const classes = useStyles();
 
     return (
@@ -23,9 +26,13 @@ export default function Header({ mainListItems, secondaryListItems, openBar, set
                 </IconButton>
             </div>
             <Divider />
-            <List>{mainListItems}</List>
+            {/* <List>{mainListItems}</List> */}
             <Divider />
-            <List>{secondaryListItems}</List>
+            {/* <List>{secondaryListItems}</List> */}
         </Drawer>
     );
 };
+
+const mapStateToProps = ({ sidebar }) => ({ openBar: sidebar.openBar });
+const mapDispatchToProps = (dispatch) => bindActionCreators({ setOpenBar }, dispatch);
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);

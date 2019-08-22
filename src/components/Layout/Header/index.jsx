@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import clsx from 'clsx';
 import { AppBar, Toolbar, IconButton, Typography, Badge } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -6,8 +8,10 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 
 import useStyles from './styles';
 
+import { setOpenBar } from './store/ducks';
 
-export default function Header({ title, openBar, setOpenBar }) {
+
+export const Header = ({ title, openBar, setOpenBar }) => {
     const classes = useStyles();
 
     return (
@@ -35,3 +39,6 @@ export default function Header({ title, openBar, setOpenBar }) {
     );
 };
 
+const mapStateToProps = ({ header, sidebar }) => ({ title: header.title, openBar: sidebar.openBar });
+const mapDispatchToProps = (dispatch) => bindActionCreators({ setOpenBar }, dispatch);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
