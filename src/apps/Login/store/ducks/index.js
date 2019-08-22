@@ -1,5 +1,8 @@
 import { apiNotToken } from '../../../../services/api';
+import { showMessage } from '../../../../components/Message/store/ducks';
 
+
+export { showMessage };
 
 export const Types = {
     LOGIN: 'login/LOGIN',
@@ -25,9 +28,7 @@ export function authenticate(username, password, history) {
             });
 
             history.push('/dashboard');
-        }, error => {
-            return { message: 'Não autorizado.' };
-        });
+        }, error => dispatch(showMessage({ open: true , message: 'Não autorizado.', variant: 'error'})));
     };
 };
 

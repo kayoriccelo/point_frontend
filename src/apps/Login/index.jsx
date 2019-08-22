@@ -3,12 +3,12 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Grid, Card, Button, Avatar } from '@material-ui/core';
 
-import { authenticate } from './store/ducks';
+import { authenticate, showMessage } from './store/ducks';
 import useStyles from './styles';
 import { Input, InputPassword, Message } from '../../components';
 
 
-const Login = ({ authenticate, history }) => {
+const Login = ({ authenticate, history, showMessage }) => {
     const classes = useStyles();
     const [values, setValue] = useState({ username: 'kayoriccelo', password: '123456', showPassword: false });
 
@@ -18,7 +18,9 @@ const Login = ({ authenticate, history }) => {
         const { username, password } = values;
 
         if (username !== '' && password !== '') {
-            authenticate(username, password, history)
+            authenticate(username, password, history);
+        } else {
+            showMessage({ message: 'Campos obrigatórios.', variant: 'warning', open: true });
         };
     };
 
@@ -53,6 +55,6 @@ const Login = ({ authenticate, history }) => {
 };
 
 
-const mapDispatchToProps = dispatch => bindActionCreators({ authenticate }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ authenticate, showMessage }, dispatch);
 
 export default connect(null, mapDispatchToProps)(Login);
