@@ -1,30 +1,31 @@
 import React from 'react';
 import { Container, Grid } from '@material-ui/core';
-import { Switch, Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 
 import useStyles from './styles';
 import { routes } from '../../../routes';
 import Footer from '../Footer';
+import PrivateRoute from '../../PrivateRoute'
 
 
 export default function Content() {
     const classes = useStyles();
 
     return (
-        <div>
+        <>
             <main className={classes.content}>
                 <div className={classes.appBarSpacer} />
                 <Container maxWidth="lg" className={classes.container}>
-                    <Grid container spacing={3}>
+                    <Grid container>
                         <Switch>
                             {routes.map(route => {
-                                return <Route {...route} />
+                                return <PrivateRoute {...route} />
                             })}
                         </Switch>
                     </Grid>
                 </Container>
+                <Footer />
             </main>
-            <Footer />
-        </div>
+        </>
     );
 };

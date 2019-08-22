@@ -5,6 +5,7 @@ import loginReducer from '../apps/Login/store/ducks';
 import sidebarReducer from '../components/Layout/Sidebar/store/ducks';
 import headerReducer from '../components/Layout/Header/store/ducks';
 import messageReducer from '../components/Message/store/ducks';
+import companyReducer from '../apps/Company/store/ducks';
 
 
 const reducers = combineReducers({
@@ -13,6 +14,7 @@ const reducers = combineReducers({
     sidebar: sidebarReducer,
     header: headerReducer,
     message: messageReducer,
+    company: companyReducer,
 });
 
 export default reducers;
