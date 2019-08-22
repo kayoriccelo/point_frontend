@@ -1,22 +1,30 @@
 import React from 'react';
-import { Container, Grid, Paper } from '@material-ui/core';
+import { Container, Grid } from '@material-ui/core';
+import { Switch, Route } from 'react-router-dom';
 
 import useStyles from './styles';
+import { routes } from '../../../routes';
+import Footer from '../Footer';
 
 
 export default function Content() {
     const classes = useStyles();
 
     return (
-        <main className={classes.content}>
-            <div className={classes.appBarSpacer} />
-            <Container maxWidth="lg" className={classes.container}>
-                <Grid container spacing={3}>
-                    <Grid item xs={12} md={8} lg={9}>
-                        <Paper> Content Teste Item </Paper>
+        <div>
+            <main className={classes.content}>
+                <div className={classes.appBarSpacer} />
+                <Container maxWidth="lg" className={classes.container}>
+                    <Grid container spacing={3}>
+                        <Switch>
+                            {routes.map(route => {
+                                return <Route {...route} />
+                            })}
+                        </Switch>
                     </Grid>
-                </Grid>
-            </Container>
-        </main>
+                </Container>
+            </main>
+            <Footer />
+        </div>
     );
 };
