@@ -5,7 +5,7 @@ import { Dashboard } from "@material-ui/icons";
 export const menus = [
     {
         title: 'Dashboard',
-        path: '/',
+        path: '/dashboard',
         icon: (<Dashboard />)
     },
 ];

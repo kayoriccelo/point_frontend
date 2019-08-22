@@ -14,24 +14,20 @@ export const Sidebar = ({ history, openBar, setOpenBar }) => {
     const classes = useStyles();
 
     const renderMenuItem = (item) => (
-        <ListItem button key={item.title} onClick={() => history.push('/dashboard')}>
+        <ListItem button key={item.title} onClick={() => history.push(item.path)}>
             <ListItemIcon>{item.icon}</ListItemIcon>
             <ListItemText primary={item.title} />
         </ListItem>
     );
 
     return (
-        <Drawer
-            variant="permanent"
+        <Drawer variant="permanent" open={openBar}
             classes={{
                 paper: clsx(classes.drawerPaper, !openBar && classes.drawerPaperClose),
             }}
-            open={openBar}
         >
-            <div style={{ position: 'absolute', padding: '6px 0px 0px 10px' }}>
-                <Avatar
-                    aria-label="Recipe"
-                    className={classes.avatar}
+            <div style={{ position: 'absolute', padding: '12px 0px 0px 8px' }}>
+                <Avatar aria-label="Recipe" className={classes.avatar}
                     src="https://img.lovepik.com/element/40028/3809.png_860.png" />
             </div>
             <div className={classes.toolbarIcon}>
@@ -39,19 +35,17 @@ export const Sidebar = ({ history, openBar, setOpenBar }) => {
                     <MenuIcon />
                 </IconButton>
             </div>
-            
+            <Divider />
             <List
-                component="nav"
-                aria-labelledby="nested-list-subheader"
-                subheader={
-                    openBar && <ListSubheader component="div" id="nested-list-subheader">
-                        Cadastros
+                component="nav" aria-labelledby="nested-list-subheader"
+                subheader={openBar &&
+                    <ListSubheader component="div" id="nested-list-subheader">
+                        Menus
                     </ListSubheader>
                 }
             >
                 {menus.map(item => renderMenuItem(item))}
             </List>
-            <Divider />
         </Drawer>
     );
 };

@@ -2,8 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import clsx from 'clsx';
-import { AppBar, Toolbar, IconButton, Typography, Badge, Avatar } from '@material-ui/core';
+import { AppBar, Toolbar, IconButton, Typography, Badge } from '@material-ui/core';
 import NotificationsIcon from '@material-ui/icons/Notifications';
+import MenuIcon from '@material-ui/icons/Menu';
 
 import useStyles from './styles';
 
@@ -23,10 +24,7 @@ export const Header = ({ title, openBar, setOpenBar }) => {
                     onClick={() => setOpenBar(true)}
                     className={clsx(classes.menuButton, openBar && classes.menuButtonHidden)}
                 >
-                    <Avatar
-                        aria-label="Recipe"
-                        className={classes.avatar}
-                        src="https://img.lovepik.com/element/40028/3809.png_860.png" />
+                    <MenuIcon />
 
                 </IconButton>
                 <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
