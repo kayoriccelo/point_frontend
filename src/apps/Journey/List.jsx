@@ -13,7 +13,7 @@ export const List = ({ getList, deleteItem, setTitle, itens, history }) => {
         { field: 'actions', label: 'Actions'}
     ];
     const [search, setSearch] = useState('');
-    const [timer, setTimer] = useState();
+    let timer = null;
 
     useEffect(() => {
         getList();
@@ -21,14 +21,14 @@ export const List = ({ getList, deleteItem, setTitle, itens, history }) => {
 
         return () => {
             setTitle('Dashboad');
-            clearTimeout(timer)
+            clearTimeout(timer);
         };
     }, [timer, getList, setTitle]);
 
     const onSearch = event => {
         clearTimeout(timer);
         setSearch(event.target.value);
-        setTimer(setTimeout(() => getList(search), 1000));
+        timer = setTimeout(() => getList(search), 1500);
     };
 
     const clickAdd = () => history.push('/registration/journey/new');

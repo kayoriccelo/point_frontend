@@ -5,7 +5,7 @@ import { Grid, Card, Button, Avatar } from '@material-ui/core';
 
 import { authenticate, showMessage } from './store/ducks';
 import useStyles from './styles';
-import { Input, InputPassword, Message } from '../../components';
+import { InputText, InputPassword, Message } from '../../components';
 
 
 const Login = ({ authenticate, history, showMessage }) => {
@@ -35,7 +35,7 @@ const Login = ({ authenticate, history, showMessage }) => {
 
                 <b style={{ fontSize: 20, paddingBottom: 40 }}>Login to Electronic Point</b>
                 
-                <Input label="Username" value={values['username']} handleChange={handleChange('username')} />
+                <InputText label="Username" value={values['username']} handleChange={handleChange('username')} />
 
                 <InputPassword password={values['password']} handleChange={() => handleChange('password')} />
 
