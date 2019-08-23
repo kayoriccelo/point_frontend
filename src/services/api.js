@@ -31,8 +31,7 @@ axios.interceptors.response.use(
                 return Promise.reject(error);
             });
         };
-
-        localStorage.clear();
+        
         return Promise.reject(error);
     }
 );

@@ -49,7 +49,7 @@ export const Form = ({ id, instance, load, save, setTitle, history }) => {
 
                 <InputTime label="Leave" fieldName="saida" value={journey.saida} handleChange={handleChange} />
 
-                <CheckboxCustom label="Possui Descanso Remunerado" fieldName="possui_dsr" value={journey.possui_dsr} handleChange={handleChange} />
+                <CheckboxCustom label="Has Remunerated Rest" fieldName="possui_dsr" value={journey.possui_dsr} handleChange={handleChange} />
             </CardContent>
             <CardActions>
                 <Button size="small" color="primary" onClick={handlerSubmit}> Save </Button>
@@ -61,5 +61,4 @@ export const Form = ({ id, instance, load, save, setTitle, history }) => {
 
 const mapStateToProps = ({ journey }) => ({ instance: journey.instance });
 const mapDispatchToProps = (dispatch) => bindActionCreators({ load, save, setTitle }, dispatch);
-
 export default connect(mapStateToProps, mapDispatchToProps)(Form);

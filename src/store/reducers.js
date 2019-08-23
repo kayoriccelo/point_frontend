@@ -7,6 +7,8 @@ import headerReducer from '../components/Layout/Header/store/ducks';
 import messageReducer from '../components/Message/store/ducks';
 import companyReducer from '../apps/Company/store/ducks';
 import journeyReducer from '../apps/Journey/store/ducks';
+import employeeReducer from '../apps/Employee/store/ducks';
+import pointMarkingReducer from '../apps/PointMarking/store/ducks';
 
 
 const reducers = combineReducers({
@@ -17,6 +19,8 @@ const reducers = combineReducers({
     message: messageReducer,
     company: companyReducer,
     journey: journeyReducer,
+    employee: employeeReducer,
+    pointmarking: pointMarkingReducer,
 });
 
 export default reducers;
