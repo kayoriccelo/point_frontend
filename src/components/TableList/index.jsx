@@ -6,9 +6,12 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import useStyles from './styles';
 
 
-export default function TableList({ columns, itens, actions, path }) {
+export default function TableList({ columns, itens, actions, path, params = ['id'], paramsValue = [] }) {
     const classes = useStyles();
-    
+
+    let paramValue = '';
+    paramsValue.map(param => paramValue = paramValue + '/' + param);
+
     return (
         <div className={classes.rootTable}>
             <Paper>
@@ -19,16 +22,19 @@ export default function TableList({ columns, itens, actions, path }) {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {itens.map(item => (
-                            <TableRow key={item.id}>
+                        {itens.map(item => {
+                            let itemValue = '';
+                            params.map(param => itemValue = itemValue + '/' + item[param]);
+
+                            return (<TableRow key={item.id}>
                                 {columns.map((column, index) => {
-                                    if (index === 0) {
+                                    if (column.is_edit) {
                                         return <TableCell key={`${item.id}-${index}`}>
-                                            <Link to={`${path}${item.id}`}>
+                                            <Link to={`${path}${itemValue}${paramValue}`}>
                                                 {item[column.field]}
                                             </Link>
                                         </TableCell>
-                                    } else if (index === columns.length - 1) {
+                                    } else if (column.field === 'actions') {
                                         return <TableCell key="deleteItem">
                                             <IconButton aria-label="delete" onClick={() => actions[0](item.id)}>
                                                 <DeleteIcon />
@@ -38,8 +44,8 @@ export default function TableList({ columns, itens, actions, path }) {
                                         return <TableCell key={`${item.id}-${index}`}>{item[column['field']]}</TableCell>
                                     };
                                 })}
-                            </TableRow>
-                        ))}
+                            </TableRow>)
+                        })}
                     </TableBody>
                 </Table>
             </Paper>

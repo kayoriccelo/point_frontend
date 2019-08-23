@@ -15,5 +15,5 @@ export default function InputCustom({ value, label, handleChange }) {
             type='text'
             label={label}
             onChange={handleChange} />
-    )
-}
+    );
+};
