@@ -39,11 +39,5 @@ export function saveDefault(instance, model, type, history, path) {
 };
 
 export function deleteDefault(id, model) {
-    return dispatch => {
-        return api.delete(`api/${model}/${id}`).then(res => {
-            dispatch(showMessage({ open: true, message: 'Record successfully deleted.', variant: 'success' }));
-        }, error => {
-            dispatch(showMessage({ open: true, message: 'Unable to delete record.', variant: 'error' }));
-        });
-    };
+    return api.delete(`api/${model}/${id}`)
 };

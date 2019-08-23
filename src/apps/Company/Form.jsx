@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Card, CardContent, CardActions, Button } from '@material-ui/core';
 
-import { Input } from '../../components';
+import { InputText } from '../../components';
 import { load, update, setTitle } from './store/ducks';
 
 
@@ -34,13 +34,13 @@ export const Form = ({ instance, load, update, setTitle, history }) => {
         <Card>
             <CardContent>
                 <div>
-                    <Input label="CNPJ" value={company.cnpj} handleChange={(e) => handleChange(e, 'cnpj')} />
+                    <InputText label="CNPJ" value={company.cnpj} handleChange={(e) => handleChange(e, 'cnpj')} />
                     
-                    <Input label="Razão Social" value={company.razao_social} handleChange={(e) => handleChange(e, 'razao_social')} />
+                    <InputText label="Razão Social" value={company.razao_social} handleChange={(e) => handleChange(e, 'razao_social')} />
 
-                    <Input label="Email" value={company.email} handleChange={(e) => handleChange(e, 'email')} />
+                    <InputText label="Email" value={company.email} handleChange={(e) => handleChange(e, 'email')} />
 
-                    <Input label="Telefone" value={company.telefone} handleChange={(e) => handleChange(e, 'telefone')} />
+                    <InputText label="Telefone" value={company.telefone} handleChange={(e) => handleChange(e, 'telefone')} />
                 </div>
             </CardContent>
             <CardActions>
