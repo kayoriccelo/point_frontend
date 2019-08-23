@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Card, CardContent, CardActions, Button } from '@material-ui/core';
 
-import { InputText, InputPassword, SelectCustom } from '../../components';
+import { InputText, InputPassword, SelectAsync } from '../../components';
 import { load, save, createInstance, setTitle } from './store/ducks';
 
 
@@ -43,7 +43,7 @@ export const Form = ({ id, instance, load, save, setTitle, history }) => {
 
                 <InputText label="Name" value={employee.nome} handleChange={(e) => handleChange(e, 'nome')} />
 
-                <SelectCustom label="Journey" url="/api/journey" values={employee} fieldName="jornada"
+                <SelectAsync label="Journey" url="/api/journey" values={employee} fieldName="jornada"
                     handleChange={(e) => handleChange(e, "jornada")} />
 
                 <InputText label="Email" value={employee.email} handleChange={(e) => handleChange(e, 'email')} />
