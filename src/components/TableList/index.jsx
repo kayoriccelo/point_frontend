@@ -12,7 +12,7 @@ export default function TableList({ columns, itens, actions, path }) {
     return (
         <div className={classes.rootTable}>
             <Paper>
-                <Table>
+                <Table size="small">
                     <TableHead>
                         <TableRow>
                             {columns.map(column => <TableCell key={column.field}>{column.label}</TableCell>)}

@@ -1,14 +1,17 @@
-import Input from './Input';
-import InputPassword from './InputPassword';
 import Message from './Message';
 import SearchList from './SearchList';
 import TableList from './TableList';
-
+import InputText from './InputText';
+import InputTime from './InputTime';
+import InputPassword from './InputPassword';
+import CheckboxCustom from './Checkbox';
 
 export {
-    Input,
-    InputPassword,
     Message,
     SearchList,
     TableList,
+    InputText,
+    InputTime,
+    InputPassword,
+    CheckboxCustom
 };

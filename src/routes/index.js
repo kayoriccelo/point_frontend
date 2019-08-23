@@ -1,6 +1,6 @@
 import Dashboard from '../apps/Dashboard';
 import { FormCompany } from '../apps/Company';
-import { ListJourney } from '../apps/Journey';
+import { ListJourney, FormJourney } from '../apps/Journey';
 
 export const routes = [
     {
@@ -14,6 +14,12 @@ export const routes = [
         exact: true,
         path: '/registration/company',
         component: FormCompany,
+    },
+    {
+        key: 'registration-journey-form',
+        exact: true,
+        path: '/registration/journey/:id',
+        component: FormJourney,
     },
     {
         key: 'registration-journey',
