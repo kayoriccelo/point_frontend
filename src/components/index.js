@@ -3,6 +3,7 @@ import SearchList from './SearchList';
 import TableList from './TableList';
 import InputText from './InputText';
 import InputTime from './InputTime';
+import InputDate from './InputDate';
 import InputPassword from './InputPassword';
 import CheckboxCustom from './Checkbox';
 import SelectAsync from './SelectAsync';
@@ -18,5 +19,6 @@ export {
     InputPassword,
     CheckboxCustom,
     SelectAsync,
-    SelectCustom
+    SelectCustom,
+    InputDate
 };

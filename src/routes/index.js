@@ -3,6 +3,7 @@ import { FormCompany } from '../apps/Company';
 import { ListJourney, FormJourney } from '../apps/Journey';
 import { ListEmployee, FormEmployee } from '../apps/Employee';
 import { PointMarking } from '../apps/PointMarking';
+import { ListEmployeePoint, ConsultPoint } from '../apps/ConsultPoint';
 
 
 export const routes = [
@@ -41,6 +42,18 @@ export const routes = [
         exact: true,
         path: '/registration/employee',
         component: ListEmployee,
+    },
+    {
+        key: 'consult-point',
+        exact: true,
+        path: '/consultpoint/:cpf/:start/:end',
+        component: ConsultPoint,
+    },
+    {
+        key: 'employee-point',
+        exact: true,
+        path: '/consultpoint',
+        component: ListEmployeePoint,
     },
     {
         key: 'point-marking',

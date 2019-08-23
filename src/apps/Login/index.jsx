@@ -14,7 +14,7 @@ const Login = ({ authenticate, history, showMessage }) => {
 
     const handleChange = prop => event => setValue({ ...values, [prop]: event.target.value });
 
-    const clickSignin = () => {
+    const clickLogin = () => {
         const { username, password } = values;
 
         if (username !== '' && password !== '') {
@@ -37,9 +37,7 @@ const Login = ({ authenticate, history, showMessage }) => {
 
                 <div style={{ width: '70%' }}>
                     <InputText label="Username" value={values['username']} handleChange={handleChange('username')} />
-                </div>
 
-                <div style={{ width: '70%' }}>
                     <InputPassword password={values['password']} handleChange={() => handleChange('password')} />
                 </div>
 
@@ -47,7 +45,7 @@ const Login = ({ authenticate, history, showMessage }) => {
                     variant="contained"
                     color="primary"
                     className={classes.button}
-                    onClick={() => clickSignin()}
+                    onClick={() => clickLogin()}
                 >
                     Login
                 </Button>

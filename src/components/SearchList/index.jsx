@@ -6,7 +6,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import useStyles from './styles';
 
 
-export default function SearchList({ onSearch, clickAdd }) {
+export default function SearchList({ onSearch, clickAdd, children }) {
     const classes = useStyles();
     return (
         <div className={classes.rootSearch}>
@@ -16,9 +16,12 @@ export default function SearchList({ onSearch, clickAdd }) {
                     className={classes.inputSearch} placeholder="Search" inputProps={{ 'aria-label': 'Journey' }}
                     onChange={onSearch}
                 />
-                <Button variant="contained" color="primary" className={classes.buttonAdd} onClick={clickAdd}>
-                    <AddIcon />
-                </Button>
+                {children}
+                {clickAdd &&
+                    <Button variant="contained" color="primary" className={classes.buttonAdd} onClick={clickAdd}>
+                        <AddIcon />
+                    </Button>
+                }
             </Paper>
         </div>
     )
