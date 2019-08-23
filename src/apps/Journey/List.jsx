@@ -8,7 +8,7 @@ import { getList, deleteItem, setTitle } from './store/ducks';
 
 export const List = ({ getList, deleteItem, setTitle, itens, history }) => {
     const columns = [
-        { field: 'codigo', label: 'Code' },
+        { field: 'codigo', label: 'Code', is_edit: true },
         { field: 'descricao', label: 'Description' },
         { field: 'actions', label: 'Actions'}
     ];
@@ -45,7 +45,7 @@ export const List = ({ getList, deleteItem, setTitle, itens, history }) => {
                 columns={columns}
                 itens={itens}
                 actions={[clickDelete]}
-                path='/registration/journey/'
+                path='/registration/journey'
             />
         </>
     )

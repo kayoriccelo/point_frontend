@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dashboard, ViewList, Business, Today, People, Fingerprint } from "@material-ui/icons";
+import { Dashboard, ViewList, Business, Today, People, Fingerprint, WatchLater } from "@material-ui/icons";
 
 
 export const menus = [
@@ -21,7 +21,7 @@ export const menus = [
             {
                 title: 'Journey',
                 path: '/registration/journey',
-                icon: (<Today />)
+                icon: (<WatchLater />)
             },
             {
                 title: 'Employee',
@@ -29,6 +29,11 @@ export const menus = [
                 icon: (<People />)
             },
         ]
+    },
+    {
+        title: 'Consult Point',
+        path: '/consultpoint',
+        icon: (<Today />)
     },
     {
         title: 'Point Marking',

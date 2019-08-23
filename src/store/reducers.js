@@ -9,6 +9,7 @@ import companyReducer from '../apps/Company/store/ducks';
 import journeyReducer from '../apps/Journey/store/ducks';
 import employeeReducer from '../apps/Employee/store/ducks';
 import pointMarkingReducer from '../apps/PointMarking/store/ducks';
+import consultPointReducer from '../apps/ConsultPoint/store/ducks';
 
 
 const reducers = combineReducers({
@@ -21,6 +22,7 @@ const reducers = combineReducers({
     journey: journeyReducer,
     employee: employeeReducer,
     pointmarking: pointMarkingReducer,
+    consultpoint: consultPointReducer,
 });
 
 export default reducers;
