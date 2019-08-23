@@ -5,6 +5,7 @@ import InputText from './InputText';
 import InputTime from './InputTime';
 import InputPassword from './InputPassword';
 import CheckboxCustom from './Checkbox';
+import SelectCustom from './Select';
 
 export {
     Message,
@@ -13,5 +14,6 @@ export {
     InputText,
     InputTime,
     InputPassword,
-    CheckboxCustom
+    CheckboxCustom,
+    SelectCustom
 };

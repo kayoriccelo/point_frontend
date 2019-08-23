@@ -7,7 +7,7 @@ import { TextField, IconButton, InputAdornment } from '@material-ui/core';
 import useStyles from './styles';
 
 
-export default function InputPassword({ password, handleChange }) {
+export default function InputPassword({ label, password, handleChange }) {
     const classes = useStyles();
     const [showPassword, setShowPassword] = useState(false);
 
@@ -19,7 +19,7 @@ export default function InputPassword({ password, handleChange }) {
         <TextField
             className={clsx(classes.margin, classes.input)}
             variant="outlined" type={showPassword ? 'text' : 'password'}
-            label="Password"
+            label={label ? label : "Password"}
             value={password}
             onChange={handleChange('password')}
             InputProps={{

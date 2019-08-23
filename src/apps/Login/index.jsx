@@ -34,10 +34,14 @@ const Login = ({ authenticate, history, showMessage }) => {
                 </div>
 
                 <b style={{ fontSize: 20, paddingBottom: 40 }}>Login to Electronic Point</b>
-                
-                <InputText label="Username" value={values['username']} handleChange={handleChange('username')} />
 
-                <InputPassword password={values['password']} handleChange={() => handleChange('password')} />
+                <div style={{ width: '70%' }}>
+                    <InputText label="Username" value={values['username']} handleChange={handleChange('username')} />
+                </div>
+
+                <div style={{ width: '70%' }}>
+                    <InputPassword password={values['password']} handleChange={() => handleChange('password')} />
+                </div>
 
                 <Button
                     variant="contained"
