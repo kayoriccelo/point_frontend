@@ -38,7 +38,7 @@ export default function SelectCustom({ label, url, values, fieldName, handleChan
                     <em>None</em>
                 </MenuItem>
                 {options.map(option => {
-                    return <MenuItem key={`${option.id}`} value={`${option.id}`}>{option.descricao}</MenuItem>
+                    return <MenuItem key={`${option.id}`} value={`${option.id}`}>{option.description}</MenuItem>
                 })}
             </Select>
         </FormControl>

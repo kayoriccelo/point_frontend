@@ -7,7 +7,7 @@ import useStyles from './styles';
 import TablePagination from '../TablePagination';
 
 
-export default function TableList({ columns, itens, actions, path, params = ['id'], paramsValue = [] }) {
+export default function TableList({ columns, data, actions, path, is_pagination = true, params = ['id'], paramsValue = [] }) {
     const classes = useStyles();
 
     let paramValue = '';
@@ -15,7 +15,7 @@ export default function TableList({ columns, itens, actions, path, params = ['id
 
     return (
         <div className={classes.rootTable}>
-            <Card style={{ maxHeight: 'calc(80vh - 120px)', overflowX: 'auto', overflowY: 'visible'}}>
+            <Card className={classes.card}>
                 <Table size="small">
                     <TableHead>
                         <TableRow className={classes.tableRow}>
@@ -23,7 +23,7 @@ export default function TableList({ columns, itens, actions, path, params = ['id
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {itens.map(item => {
+                        {data.itens.map(item => {
                             let itemValue = '';
                             params.map(param => itemValue = itemValue + '/' + item[param]);
 
@@ -52,7 +52,7 @@ export default function TableList({ columns, itens, actions, path, params = ['id
                             </TableRow>)
                         })}
                     </TableBody>
-                    <TablePagination />
+                    {is_pagination && <TablePagination count={data.count} />}
                 </Table>
             </Card>
         </div>

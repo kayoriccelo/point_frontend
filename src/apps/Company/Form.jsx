@@ -11,7 +11,7 @@ export const Form = ({ instance, load, update, setTitle, history }) => {
     const [company, setCompany] = useState(null);
 
     useEffect(() => {
-        company && setTitle(`Company: ${company.razao_social}`);
+        company && setTitle(`Company: ${company.business_name}`);
 
         return () => setTitle(`Dashboard`);
     }, [company, setTitle]);
@@ -24,7 +24,7 @@ export const Form = ({ instance, load, update, setTitle, history }) => {
 
     const handleChange = (event, name) => {
         setCompany({ ...company, [name]: event.target.value });
-        setTitle(`Company: ${company.razao_social}`);
+        setTitle(`Company: ${company.business_name}`);
     };
 
     const handlerSubmit = () => update(company, history);
@@ -34,18 +34,18 @@ export const Form = ({ instance, load, update, setTitle, history }) => {
         <Card>
             <CardContent>
                 <div>
-                    <InputText label="CNPJ" value={company.cnpj} handleChange={(e) => handleChange(e, 'cnpj')} />
+                    <InputText label="Cnpj" value={company.cnpj} handleChange={(e) => handleChange(e, 'cnpj')} />
                     
-                    <InputText label="Razão Social" value={company.razao_social} handleChange={(e) => handleChange(e, 'razao_social')} />
+                    <InputText label="Business Name" value={company.business_name} handleChange={(e) => handleChange(e, 'business_name')} />
 
                     <InputText label="Email" value={company.email} handleChange={(e) => handleChange(e, 'email')} />
 
-                    <InputText label="Telefone" value={company.telefone} handleChange={(e) => handleChange(e, 'telefone')} />
+                    <InputText label="Phone" value={company.phone} handleChange={(e) => handleChange(e, 'phone')} />
                 </div>
             </CardContent>
             <CardActions>
                 <Button size="small" color="primary" onClick={handlerSubmit}> Save </Button>
-                <Button size="small" color="primary" onClick={() => history.push('/')}> Cancel </Button>
+                <Button size="small" color="primary" onClick={() => history.push('/dashboad')}> Cancel </Button>
             </CardActions>
         </Card>
     );

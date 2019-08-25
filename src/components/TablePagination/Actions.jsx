@@ -13,7 +13,7 @@ import { useStylesActions } from './styles';
 export const TablePaginationActions = props => {
     const classes = useStylesActions();
     const theme = useTheme();
-    const { count, page, pageSize, onChangePage } = props;
+    const { count, page, rowsPerPage, onChangePage } = props;
 
     const handleFirstPageButtonClick = event =>onChangePage(event, 0);
 
@@ -21,7 +21,7 @@ export const TablePaginationActions = props => {
 
     const handleNextButtonClick = event => onChangePage(event, page + 1);
 
-    const handleLastPageButtonClick = event => onChangePage(event, Math.max(0, Math.ceil(count / pageSize) - 1));
+    const handleLastPageButtonClick = event => onChangePage(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
 
     return (
         <div className={classes.root}>
@@ -37,14 +37,14 @@ export const TablePaginationActions = props => {
             </IconButton>
             <IconButton
                 onClick={handleNextButtonClick}
-                disabled={page >= Math.ceil(count / pageSize) - 1}
+                disabled={page >= Math.ceil(count / rowsPerPage) - 1}
                 aria-label="next page"
             >
                 {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
             </IconButton>
             <IconButton
                 onClick={handleLastPageButtonClick}
-                disabled={page >= Math.ceil(count / pageSize) - 1}
+                disabled={page >= Math.ceil(count / rowsPerPage) - 1}
                 aria-label="last page"
             >
                 {theme.direction === 'rtl' ? <FirstPageIcon /> : <LastPageIcon />}

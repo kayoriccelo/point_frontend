@@ -10,11 +10,11 @@ import { TableList } from '../../components';
 
 export const Form = ({ instance, load, setTitle, match }) => {
     const columns = [
-        { field: 'data', label: 'Date' },
-        { field: 'entrada', label: 'Entry' },
-        { field: 'saida_intervalo', label: 'Interval Output'},
-        { field: 'retorno_intervalo', label: 'Return Interval'},
-        { field: 'saida', label: 'Leave'},
+        { field: 'date', label: 'Date' },
+        { field: 'entry', label: 'Entry' },
+        { field: 'interval_output', label: 'Interval Output'},
+        { field: 'return_interval', label: 'Return Interval'},
+        { field: 'leave', label: 'Leave'},
     ];
     const classes = useStyles();
     const [consultpoint, setPoints] = useState(null)
@@ -27,7 +27,7 @@ export const Form = ({ instance, load, setTitle, match }) => {
     }, [consultpoint, instance, match, load]);
 
     useEffect(() => {
-        instance && setTitle(`Points of ${instance['nome']}`);
+        instance && setTitle(`Points of ${instance['name']}`);
 
         return () => setTitle('Dashboard');
     }, [instance, setTitle]);
@@ -44,14 +44,15 @@ export const Form = ({ instance, load, setTitle, match }) => {
                         style={{ padding: 10 }}
                     >
                         <div style={{ paddingBottom: 5 }}><b>Cpf:</b> {consultpoint.cpf}</div>
-                        <div style={{ paddingBottom: 5 }}><b>Name:</b> {consultpoint.nome}</div>
-                        <div style={{ paddingBottom: 5 }}><b>Journey:</b> {consultpoint.jornada}</div>
+                        <div style={{ paddingBottom: 5 }}><b>Name:</b> {consultpoint.name}</div>
+                        <div style={{ paddingBottom: 5 }}><b>Journey:</b> {consultpoint.journey}</div>
                     </Grid>
                 </Paper>
             </div>
             <TableList
                 columns={columns}
-                itens={consultpoint.marcacoes}
+                data={{itens: consultpoint.points }}
+                is_pagination={false}
             />
         </>
     );

@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { TableFooter, TableRow, TablePagination as TablePaginationUI } from '@material-ui/core';
 
+import { setPage, setPageSize } from './store/ducks';
 import TablePaginationActions from './Actions';
 
 
-export default function TablePagination({ count }) {
-    const [page, setPage] = useState(0);
-    const [pageSize, setPageSize] = useState(10);
+export const TablePagination = ({ count, page, pageSize, setPage, setPageSize }) => {
 
     const handleChangePage = (event, newPage) => setPage(newPage);
 
@@ -36,3 +37,7 @@ export default function TablePagination({ count }) {
         </TableFooter>
     );
 };
+
+const mapStateToProps = ({ pagination }) => ({ ...pagination });
+const mapDispatchToProps = dispatch => bindActionCreators({ setPage, setPageSize }, dispatch);
+export default connect(mapStateToProps, mapDispatchToProps)(TablePagination);

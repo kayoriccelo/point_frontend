@@ -37,23 +37,23 @@ export const Form = ({ id, instance, load, save, setTitle, history }) => {
         journey &&
         <Card>
             <CardContent>
-                <InputText label="Code" value={journey.codigo} handleChange={(e) => handleChange(e, 'codigo')} />
+                <InputText label="Code" value={journey.code} handleChange={(e) => handleChange(e, 'code')} />
 
-                <InputText label="Description" value={journey.descricao} handleChange={(e) => handleChange(e, 'descricao')} />
+                <InputText label="Description" value={journey.description} handleChange={(e) => handleChange(e, 'description')} />
                 
-                <InputTime label="Entry" fieldName="entrada" value={journey.entrada} handleChange={handleChange} />
+                <InputTime label="Entry" fieldName="entry" value={journey.entry} handleChange={handleChange} />
 
-                <InputTime label="Interval Output" fieldName="saida_intervalo" value={journey.saida_intervalo} handleChange={handleChange} />
+                <InputTime label="Interval Output" fieldName="interval_output" value={journey.interval_output} handleChange={handleChange} />
 
-                <InputTime label="Return Interval" fieldName="retorno_intervalo" value={journey.retorno_intervalo} handleChange={handleChange} />
+                <InputTime label="Return Interval" fieldName="return_interval" value={journey.return_interval} handleChange={handleChange} />
 
-                <InputTime label="Leave" fieldName="saida" value={journey.saida} handleChange={handleChange} />
+                <InputTime label="Leave" fieldName="leave" value={journey.leave} handleChange={handleChange} />
 
-                <CheckboxCustom label="Has Remunerated Rest" fieldName="possui_dsr" value={journey.possui_dsr} handleChange={handleChange} />
+                <CheckboxCustom label="Has Remunerated Rest" fieldName="has_remunerated_rest" value={journey.has_remunerated_rest} handleChange={handleChange} />
             </CardContent>
             <CardActions>
                 <Button size="small" color="primary" onClick={handlerSubmit}> Save </Button>
-                <Button size="small" color="primary" onClick={() => history.push('/jornadas')}> Cancel </Button>
+                <Button size="small" color="primary" onClick={() => history.push('/registration/journey')}> Cancel </Button>
             </CardActions>
         </Card>
     );

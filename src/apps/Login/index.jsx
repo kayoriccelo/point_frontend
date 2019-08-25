@@ -20,7 +20,7 @@ const Login = ({ authenticate, history, showMessage }) => {
         if (username !== '' && password !== '') {
             authenticate(username, password, history);
         } else {
-            showMessage({ message: 'Campos obrigatórios.', variant: 'warning', open: true });
+            showMessage({ message: 'Required fields.', variant: 'warning', open: true });
         };
     };
 
