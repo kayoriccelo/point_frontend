@@ -11,7 +11,7 @@ export const Form = ({ id, instance, load, save, setTitle, history }) => {
     const [journey, setJourney] = useState(null);
 
     useEffect(() => {
-        setTitle(`Journey: ${journey && journey.descricao}`);
+        journey && setTitle(`Journey: ${journey.descricao}`);
 
         return () => setTitle(`Dashboard`);
     }, [journey, setTitle]);

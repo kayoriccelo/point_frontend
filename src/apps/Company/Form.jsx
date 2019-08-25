@@ -11,7 +11,7 @@ export const Form = ({ instance, load, update, setTitle, history }) => {
     const [company, setCompany] = useState(null);
 
     useEffect(() => {
-        setTitle(`Company: ${company && company.razao_social}`);
+        company && setTitle(`Company: ${company.razao_social}`);
 
         return () => setTitle(`Dashboard`);
     }, [company, setTitle]);

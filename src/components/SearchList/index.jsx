@@ -18,7 +18,7 @@ export default function SearchList({ onSearch, clickAdd, children }) {
                 />
                 {children}
                 {clickAdd &&
-                    <Button variant="contained" color="primary" className={classes.buttonAdd} onClick={clickAdd}>
+                    <Button variant="contained" className={classes.buttonAdd} onClick={clickAdd}>
                         <AddIcon />
                     </Button>
                 }

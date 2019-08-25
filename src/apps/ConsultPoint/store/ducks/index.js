@@ -16,7 +16,7 @@ export const getList = (search = '') => getListDefault(search, 'employee', Types
 
 export function load(cpf, inicio, final) {
     return dispatch => {
-        return api.get(`api/batidas?cpf=${cpf}&inicio=${inicio}&final=${final}`).then(res => {
+        return api.get(`api/consultpoint?cpf=${cpf}&inicio=${inicio}&final=${final}`).then(res => {
             dispatch({ type: Types.GET, payload: res.data });
         }, error => {
             dispatch(showMessage({ open: true, message: 'Unable to load.', variant: 'error' }));

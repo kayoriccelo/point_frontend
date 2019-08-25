@@ -11,7 +11,7 @@ export const Form = ({ id, instance, load, save, setTitle, history }) => {
     const [employee, setEmployee] = useState(null);
 
     useEffect(() => {
-        setTitle(`Employee: ${employee && employee.nome}`);
+        employee && setTitle(`Employee: ${employee.nome}`);
 
         return () => setTitle(`Dashboard`);
     }, [employee, setTitle]);
@@ -50,7 +50,7 @@ export const Form = ({ id, instance, load, save, setTitle, history }) => {
 
                 <InputText label="Username" value={employee.username} handleChange={(e) => handleChange(e, 'username')} />
 
-                <InputPassword label="New password" password={employee.password} handleChange={() => handlePasswordChange('password')} />
+                <InputPassword label="New password" password={employee.new_password} handleChange={() => handlePasswordChange('new_password')} />
 
             </CardContent>
             <CardActions>

@@ -20,14 +20,14 @@ export const Form = ({ instance, load, setTitle, match }) => {
     const [consultpoint, setPoints] = useState(null)
 
     useEffect(() => {
-        const { cpf, start, end } = match.params
+        const { cpf, start, end } = match.params;
         consultpoint === null && load(cpf, start, end).then(res => {
             consultpoint !== instance && setPoints(instance);
         });
     }, [consultpoint, instance, match, load]);
 
     useEffect(() => {
-        setTitle(`Points of ${instance ? instance['nome'] : ''}`);
+        instance && setTitle(`Points of ${instance['nome']}`);
 
         return () => setTitle('Dashboard');
     }, [instance, setTitle]);
@@ -43,9 +43,9 @@ export const Form = ({ instance, load, setTitle, match }) => {
                         justify="center"
                         style={{ padding: 10 }}
                     >
-                        <div style={{ paddingBottom: 5 }}><b>CPF:</b> {consultpoint.cpf}</div>
-                        <div style={{ paddingBottom: 5 }}><b>Nome:</b> {consultpoint.nome}</div>
-                        <div style={{ paddingBottom: 5 }}><b>Jornada:</b> {consultpoint.jornada}</div>
+                        <div style={{ paddingBottom: 5 }}><b>Cpf:</b> {consultpoint.cpf}</div>
+                        <div style={{ paddingBottom: 5 }}><b>Name:</b> {consultpoint.nome}</div>
+                        <div style={{ paddingBottom: 5 }}><b>Journey:</b> {consultpoint.jornada}</div>
                     </Grid>
                 </Paper>
             </div>

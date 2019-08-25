@@ -5,8 +5,15 @@ const useStyles = makeStyles({
     rootTable: {
         maxHeight: 800, 
         overflow: 'auto',
-        margin: '15px 5px 15px 5px'
-    }
+        margin: 2
+    },
+    tableRow: {
+        backgroundColor: '#24292e',
+    },
+    tableCell: {
+        color: 'white',
+        fontWeight: 'bold'
+    },
 });
 
 export default useStyles;
