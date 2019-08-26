@@ -15,17 +15,17 @@ export const Types = {
 
 export function createInstance() {
     return {
-        codigo: null,
-        descricao: '',
-        entrada: '00:00',
-        saida_intervalo: '00:00',
-        retorno_intervalo: '00:00',
-        saida: '00:00',
-        possui_dsr: true
+        code: null,
+        description: '',
+        entry: '00:00',
+        interval_output: '00:00',
+        return_interval: '00:00',
+        leave: '00:00',
+        has_remunerated_rest: true
     };
 };
 
-export const getList = (search = '') => getListDefault(search, 'journey', Types.LIST);
+export const getList = (page, pageSize, search = '') => getListDefault(search, page, pageSize, 'journey', Types.LIST);
 
 export const load = (id) => loadDefault(id, 'journey', Types.GET)
 
@@ -43,14 +43,14 @@ export const deleteItem = (id) => {
 };
 
 export const initialState = {
-    itens: [],
+    data: { itens: [], count: 0 },
     instance: null,
 };
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case Types.LIST:
-            return { ...state, itens: action.payload };
+            return { ...state, data: { itens: action.payload.results, count: action.payload.count } };
 
         case Types.GET:
             return { ...state, instance: action.payload };

@@ -2,12 +2,14 @@ import api from '../../../../services/api';
 import { showMessage } from '../../../../components/Message/store/ducks';
 
 
-export function getListDefault(search = '', model, type) {
-    search = search !== '' ? `?search=${search}` : '';
+export function getListDefault(search, page, pageSize, model, type) {
+    search = search !== '' ? `?search=${search}&` : `?`;
+
+    search += `page=${page + 1}&page_size=${pageSize}`
 
     return dispatch => {
         return api.get(`api/${model}${search}`).then(res => {
-            dispatch({ type, payload: res.data.results });
+            dispatch({ type, payload: res.data });
         }, error => {
             dispatch(showMessage({ open: true, message: 'Unable to list items.', variant: 'error' }));
         });

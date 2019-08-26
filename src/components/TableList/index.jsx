@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Table, TableHead, TableBody, TableRow, TableCell, Paper, IconButton } from '@material-ui/core';
+import { Table, TableHead, TableBody, TableRow, TableCell, Card, IconButton } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 import useStyles from './styles';
+import TablePagination from '../TablePagination';
 
 
-export default function TableList({ columns, itens, actions, path, params = ['id'], paramsValue = [] }) {
+export default function TableList({ columns, data, actions, path, is_pagination = true, params = ['id'], paramsValue = [] }) {
     const classes = useStyles();
 
     let paramValue = '';
@@ -14,32 +15,36 @@ export default function TableList({ columns, itens, actions, path, params = ['id
 
     return (
         <div className={classes.rootTable}>
-            <Paper>
+            <Card className={classes.card}>
                 <Table size="small">
                     <TableHead>
-                        <TableRow>
-                            {columns.map(column => <TableCell key={column.field}>{column.label}</TableCell>)}
+                        <TableRow className={classes.tableRow}>
+                            {columns.map(column => <TableCell className={classes.tableCell} key={column.field}>{column.label}</TableCell>)}
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {itens.map(item => {
+                        {data.itens.map(item => {
                             let itemValue = '';
                             params.map(param => itemValue = itemValue + '/' + item[param]);
 
                             return (<TableRow key={item.id}>
                                 {columns.map((column, index) => {
                                     if (column.is_edit) {
-                                        return <TableCell key={`${item.id}-${index}`}>
-                                            <Link to={`${path}${itemValue}${paramValue}`}>
-                                                {item[column.field]}
-                                            </Link>
-                                        </TableCell>
+                                        return (
+                                            <TableCell key={`${item.id}-${index}`}>
+                                                <Link to={`${path}${itemValue}${paramValue}`}>
+                                                    {item[column.field]}
+                                                </Link>
+                                            </TableCell>
+                                        )
                                     } else if (column.field === 'actions') {
-                                        return <TableCell key="deleteItem">
-                                            <IconButton aria-label="delete" onClick={() => actions[0](item.id)}>
-                                                <DeleteIcon />
-                                            </IconButton>
-                                        </TableCell>
+                                        return (
+                                            <TableCell key="deleteItem">
+                                                <IconButton aria-label="delete" onClick={() => actions[0](item.id)}>
+                                                    <DeleteIcon fontSize="small" color="secondary" />
+                                                </IconButton>
+                                            </TableCell>
+                                        )
                                     } else {
                                         return <TableCell key={`${item.id}-${index}`}>{item[column['field']]}</TableCell>
                                     };
@@ -47,8 +52,9 @@ export default function TableList({ columns, itens, actions, path, params = ['id
                             </TableRow>)
                         })}
                     </TableBody>
+                    {is_pagination && <TablePagination count={data.count} />}
                 </Table>
-            </Paper>
+            </Card>
         </div>
     );
 };

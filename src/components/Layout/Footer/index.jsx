@@ -1,16 +1,23 @@
 import React from 'react';
-import { Grid, Typography } from '@material-ui/core';
+import { Container, Typography } from '@material-ui/core';
+
+import useStyles from './styles';
 
 
 export default function Footer() {
+    const classes = useStyles();
+
     return (
-        <Grid item xs={12} style={{marginTop: 10}}>
-            <Typography variant="body2" color="textSecondary" align="center">
-                {'Copyright © '}
-                {/* <Link color="inherit" href="https://www.linkedin.com/in/kayoriccelo/"> */}
-                Kayo Riccelo 2019
-                 {/* </Link>{' '} */}
-            </Typography>
-        </Grid>
+        <footer className={classes.footer}>
+            <Container maxWidth="sm">
+                <Typography variant="body2" color="textSecondary" align="center" className={classes.textSecondary}>
+                    {'Copyright © '}
+                    <a href="https://www.linkedin.com/in/kayoriccelo/" style={{ color: '#3385ff' }} target="_blank" rel="noopener noreferrer">
+                        Kayo Riccelo
+                        </a>
+                    {' 2019'}
+                </Typography>
+            </Container>
+        </footer>
     );
 };
