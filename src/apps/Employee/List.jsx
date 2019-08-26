@@ -6,24 +6,27 @@ import { SearchList, TableList } from '../../components';
 import { getList, deleteItem, setTitle } from './store/ducks';
 
 
-export const List = ({ getList, deleteItem, setTitle, itens, history }) => {
+export const List = ({ data, page, pageSize, getList, deleteItem, setTitle, history }) => {
     const columns = [
         { field: 'cpf', label: 'Cpf', is_edit: true },
-        { field: 'nome', label: 'Name' },
-        { field: 'actions', label: 'Actions'}
+        { field: 'name', label: 'Name' },
+        { field: 'actions', label: 'Actions' }
     ];
     const [search, setSearch] = useState('');
     let timer = null;
 
     useEffect(() => {
-        getList();
+        getList(page, pageSize);
+    }, [page, pageSize, getList])
+
+    useEffect(() => {
         setTitle('Employees');
 
         return () => {
             setTitle('Dashboad');
             clearTimeout(timer);
         };
-    }, [timer, getList, setTitle]);
+    }, [timer, setTitle]);
 
     const onSearch = event => {
         clearTimeout(timer);
@@ -43,7 +46,7 @@ export const List = ({ getList, deleteItem, setTitle, itens, history }) => {
             />
             <TableList
                 columns={columns}
-                itens={itens}
+                data={data}
                 actions={[clickDelete]}
                 path='/registration/employee'
             />
@@ -51,6 +54,7 @@ export const List = ({ getList, deleteItem, setTitle, itens, history }) => {
     )
 };
 
-const mapStateToProps = ({ employee }) => ({ itens: employee.itens });
+const mapStateToProps = ({ employee, pagination }) =>
+    ({ data: employee.data, page: pagination.page, pageSize: pagination.pageSize });
 const mapDispatchToProps = (dispatch) => bindActionCreators({ getList, deleteItem, setTitle }, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(List);

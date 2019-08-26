@@ -20,7 +20,7 @@ export function createInstance() {
     };
 };
 
-export const getList = (search = '') => getListDefault(search, 'employee', Types.LIST); 
+export const getList = (page, pageSize, search = '') => getListDefault(search, page, pageSize, 'employee', Types.LIST);
 
 export const load = (id) => loadDefault(id, 'employee', Types.GET)
 
@@ -38,14 +38,14 @@ export const deleteItem = (id) => {
 };
 
 export const initialState = {
-    itens: [],
+    data: { itens: [], count: 0 },
     instance: null,
 };
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case Types.LIST:
-            return { ...state, itens: action.payload };
+            return { ...state, data: { itens: action.payload.results, count: action.payload.count } };
 
         case Types.GET:
             return { ...state, instance: action.payload };

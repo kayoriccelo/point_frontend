@@ -11,7 +11,7 @@ export const Form = ({ id, instance, load, save, setTitle, history }) => {
     const [employee, setEmployee] = useState(null);
 
     useEffect(() => {
-        setTitle(`Employee: ${employee && employee.nome}`);
+        employee && setTitle(`Employee: ${employee.name}`);
 
         return () => setTitle(`Dashboard`);
     }, [employee, setTitle]);
@@ -28,7 +28,7 @@ export const Form = ({ id, instance, load, save, setTitle, history }) => {
 
     const handleChange = (event, name) => {
         setEmployee({ ...employee, [name]: event.target ? event.target.value : event });
-        setTitle(`Employee: ${employee.nome}`);
+        setTitle(`Employee: ${employee.name}`);
     };
 
     const handlePasswordChange = prop => event => setEmployee({ ...employee, [prop]: event.target.value });
@@ -41,21 +41,21 @@ export const Form = ({ id, instance, load, save, setTitle, history }) => {
             <CardContent>
                 <InputText label="Cpf" value={employee.cpf} handleChange={(e) => handleChange(e, 'cpf')} />
 
-                <InputText label="Name" value={employee.nome} handleChange={(e) => handleChange(e, 'nome')} />
+                <InputText label="Name" value={employee.name} handleChange={(e) => handleChange(e, 'name')} />
 
-                <SelectAsync label="Journey" url="/api/journey" values={employee} fieldName="jornada"
-                    handleChange={(e) => handleChange(e, "jornada")} />
+                <SelectAsync label="Journey" url="/api/journey" values={employee} fieldName="journey"
+                    handleChange={(e) => handleChange(e, "journey")} />
 
                 <InputText label="Email" value={employee.email} handleChange={(e) => handleChange(e, 'email')} />
 
                 <InputText label="Username" value={employee.username} handleChange={(e) => handleChange(e, 'username')} />
 
-                <InputPassword label="New password" password={employee.password} handleChange={() => handlePasswordChange('password')} />
+                <InputPassword label="New password" password={employee.new_password} handleChange={() => handlePasswordChange('new_password')} />
 
             </CardContent>
             <CardActions>
                 <Button size="small" color="primary" onClick={handlerSubmit}> Save </Button>
-                <Button size="small" color="primary" onClick={() => history.push('/jornadas')}> Cancel </Button>
+                <Button size="small" color="primary" onClick={() => history.push('/registration/journey')}> Cancel </Button>
             </CardActions>
         </Card>
     );

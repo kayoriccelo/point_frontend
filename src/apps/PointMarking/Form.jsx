@@ -10,7 +10,7 @@ import useStyles from "./styles";
 
 export const Form = ({ save, setTitle }) => {
     const classes = useStyles();
-    const [pointMarking, setPointMarking] = useState({ cpf: '', password: '', tipo: '' });
+    const [pointMarking, setPointMarking] = useState({ cpf: '', password: '', type: '' });
     const [currentTime, setCurrentTime] = useState();
 
     useEffect(() => {
@@ -32,7 +32,7 @@ export const Form = ({ save, setTitle }) => {
 
     const handlePasswordChange = prop => event => setPointMarking({ ...pointMarking, [prop]: event.target.value });
 
-    const clickSubmit = () => save({ ...pointMarking, hora: currentTime }).then(res => setPointMarking({ cpf: '', password: '', tipo: '' }));
+    const clickSubmit = () => save({ ...pointMarking, hour: currentTime }).then(res => setPointMarking({ cpf: '', password: '', type: '' }));
 
     return (
         <Grid container className={classes.grid}>
@@ -40,9 +40,9 @@ export const Form = ({ save, setTitle }) => {
                 <CardContent className={classes.cardContent}>
                     <div className={classes.time}><b>{currentTime}</b></div>
 
-                    <SelectCustom label="Type" values={pointMarking} fieldName="tipo" handleChange={handleChange} options={[
-                        { key: '0', value: 'E', label: 'Entry' }, { key: '1', value: 'SI', label: 'Interval Output' },
-                        { key: '2', value: 'R', label: 'Return Interval' }, { key: '3', value: 'S', label: 'Leave' },
+                    <SelectCustom label="Type" values={pointMarking} fieldName="type" handleChange={handleChange} options={[
+                        { key: '0', value: 'E', label: 'Entry' }, { key: '1', value: 'IO', label: 'Interval Output' },
+                        { key: '2', value: 'RI', label: 'Return Interval' }, { key: '3', value: 'L', label: 'Leave' },
                     ]} />
 
                     <InputText label="Cpf" value={pointMarking.cpf} handleChange={(e) => handleChange(e, "cpf")} />

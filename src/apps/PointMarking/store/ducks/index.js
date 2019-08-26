@@ -21,10 +21,10 @@ export default function reducer(state = initialState, action) {
 export function save(pointMarking) {
     return dispatch => {
         return api.post(`api/pointmarking/`, pointMarking).then(res => {
-            dispatch(showMessage({ open: true, message: 'Marcação realizada com sucesso.', variant: 'success' }));
+            dispatch(showMessage({ open: true, message: 'Marking done successfully.', variant: 'success' }));
         }, error => {
             let errorMsg = Array.isArray(error.response.data.error) ? error.response.data.error[0] : error.response.data.error;
-            let msg = errorMsg ? errorMsg : 'Não foi possível realizar a marcação.';
+            let msg = errorMsg ? errorMsg : 'Could not mark point.';
             
             dispatch(showMessage({ open: true, message: msg, variant: 'error' }));
         });

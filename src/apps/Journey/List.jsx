@@ -6,24 +6,27 @@ import { SearchList, TableList } from '../../components';
 import { getList, deleteItem, setTitle } from './store/ducks';
 
 
-export const List = ({ getList, deleteItem, setTitle, itens, history }) => {
+export const List = ({ data, page, pageSize, getList, deleteItem, setTitle, history }) => {
     const columns = [
-        { field: 'codigo', label: 'Code', is_edit: true },
-        { field: 'descricao', label: 'Description' },
-        { field: 'actions', label: 'Actions'}
+        { field: 'code', label: 'Code', is_edit: true },
+        { field: 'description', label: 'Description' },
+        { field: 'actions', label: 'Actions' }
     ];
     const [search, setSearch] = useState('');
     let timer = null;
 
     useEffect(() => {
-        getList();
+        getList(page, pageSize);
+    }, [page, pageSize, getList])
+
+    useEffect(() => {
         setTitle('Journeys');
 
         return () => {
             setTitle('Dashboad');
             clearTimeout(timer);
         };
-    }, [timer, getList, setTitle]);
+    }, [timer, setTitle]);
 
     const onSearch = event => {
         clearTimeout(timer);
@@ -43,7 +46,7 @@ export const List = ({ getList, deleteItem, setTitle, itens, history }) => {
             />
             <TableList
                 columns={columns}
-                itens={itens}
+                data={data}
                 actions={[clickDelete]}
                 path='/registration/journey'
             />
@@ -51,6 +54,7 @@ export const List = ({ getList, deleteItem, setTitle, itens, history }) => {
     )
 };
 
-const mapStateToProps = ({ journey }) => ({ itens: journey.itens });
+const mapStateToProps = ({ journey, pagination }) =>
+    ({ data: journey.data, page: pagination.page, pageSize: pagination.pageSize });
 const mapDispatchToProps = (dispatch) => bindActionCreators({ getList, deleteItem, setTitle }, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(List);
