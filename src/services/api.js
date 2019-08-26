@@ -30,8 +30,11 @@ axios.interceptors.response.use(
                 localStorage.clear();
                 return Promise.reject(error);
             });
+        } else if (status === 401) {
+            localStorage.clear();
+            return Promise.reject(error);
         };
-        
+
         return Promise.reject(error);
     }
 );

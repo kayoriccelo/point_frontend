@@ -27,9 +27,14 @@ export default function EnhancedTableHead({ classes, columns, order, orderBy, on
                             </TableSortLabel>
                         </TableCell>
                         :
-                        <TableCell className={classes.tableCell} key={column.field}>{column.label}</TableCell>
+                        <TableCell
+                            key={column.field}
+                            className={classes.tableCell}
+                        >
+                            {column.label}
+                        </TableCell>
                 ))}
             </TableRow>
         </TableHead>
     );
-}
+};

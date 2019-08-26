@@ -35,7 +35,7 @@ export const Form = ({ instance, load, update, setTitle, history }) => {
             <CardContent>
                 <div>
                     <InputText label="Cnpj" value={company.cnpj} handleChange={(e) => handleChange(e, 'cnpj')} />
-                    
+
                     <InputText label="Business Name" value={company.business_name} handleChange={(e) => handleChange(e, 'business_name')} />
 
                     <InputText label="Email" value={company.email} handleChange={(e) => handleChange(e, 'email')} />
@@ -44,8 +44,16 @@ export const Form = ({ instance, load, update, setTitle, history }) => {
                 </div>
             </CardContent>
             <CardActions>
-                <Button size="small" color="primary" onClick={handlerSubmit}> Save </Button>
-                <Button size="small" color="primary" onClick={() => history.push('/dashboad')}> Cancel </Button>
+                <div style={{ marginLeft: 'auto' }}>
+                    <Button
+                        size="small" variant="contained" color="error"
+                        onClick={() => history.push('/dashboad')}
+                    > Cancel </Button>
+                    <Button
+                        size="small" variant="contained" color="primary" style={{ margin: 8 }}
+                        onClick={handlerSubmit}
+                    > Save </Button>
+                </div>
             </CardActions>
         </Card>
     );
