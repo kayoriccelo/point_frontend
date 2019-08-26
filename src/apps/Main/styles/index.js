@@ -8,7 +8,8 @@ const useStyles = makeStyles(theme => ({
     },
     main: {
         display: 'flex',        
-        height: 'calc(100vh - 90px)',
+        height: 'calc(100vh - 0px)',
+        backgroundColor: '#fafafa'
     }
 }));
 

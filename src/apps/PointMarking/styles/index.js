@@ -3,8 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
     grid: {
-        height: '100%',
-        width: '100%',
+        paddingTop: 150,
+        display: 'flex', 
         justifyContent: 'center',
         alignItems: 'center'
     },
