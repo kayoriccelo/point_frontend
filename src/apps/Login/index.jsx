@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Grid, Card, Button, Avatar } from '@material-ui/core';
@@ -49,6 +50,9 @@ const Login = ({ authenticate, history, showMessage }) => {
                 >
                     Login
                 </Button>
+                <div style={{ fontSize: 12, marginTop: 8 }}>
+                    Not already have an account? <Link to="/signup" >Sign Up</Link>
+                </div>
             </Card>
 
             <Message />

@@ -2,7 +2,7 @@ import axios from 'axios';
 import axios2 from 'axios';
 
 axios.interceptors.request.use(config => {
-    config.baseURL = `http://127.0.0.1:8000`;
+    config.baseURL = `https://apieletronicpoint.herokuapp.com`;
 
     if (localStorage.getItem('access')) {
         config.headers.common['Authorization'] = `Bearer ${localStorage.getItem('access')}`;
@@ -40,7 +40,7 @@ axios.interceptors.response.use(
 );
 
 axios2.interceptors.request.use(config => {
-    config.baseURL = `http://127.0.0.1:8000`;
+    config.baseURL = `https://apieletronicpoint.herokuapp.com`;
     return config;
 }, error => {
     return Promise.reject(error);

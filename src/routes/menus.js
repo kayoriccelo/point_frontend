@@ -6,7 +6,7 @@ export const menus = [
     {
         title: 'Dashboard',
         path: '/dashboard',
-        icon: (<Dashboard style={{ color: '#00b300' }} />)
+        icon: (<Dashboard style={{ color: '#24292e' }} />)
     },
     {
         title: 'Registration',
@@ -16,28 +16,28 @@ export const menus = [
             {
                 title: 'Company',
                 path: '/registration/company',
-                icon: (<Business style={{ color: '#cc2900' }}/>)
+                icon: (<Business />)
             },
             {
                 title: 'Journey',
                 path: '/registration/journey',
-                icon: (<WatchLater style={{ color: '#ff9900' }}/>)
+                icon: (<WatchLater />)
             },
             {
                 title: 'Employee',
                 path: '/registration/employee',
-                icon: (<People style={{ color: '#00004d' }}/>)
+                icon: (<People />)
             },
         ]
     },
     {
         title: 'Consult Point',
         path: '/consultpoint',
-        icon: (<Today style={{color: '#3399ff'}} />)
+        icon: (<Today style={{ color: '#24292e' }} />)
     },
     {
         title: 'Point Marking',
         path: '/pointmarking',
-        icon: (<Fingerprint style={{color: 'teal'}} />)
+        icon: (<Fingerprint style={{ color: 't#24292eeal' }} />)
     },
 ];

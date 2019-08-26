@@ -28,7 +28,7 @@ export function authenticate(username, password, history) {
             });
 
             history.push('/dashboard');
-        }, error => dispatch(showMessage({ open: true , message: 'Não autorizado.', variant: 'error'})));
+        }, error => dispatch(showMessage({ open: true , message: 'Not Authorized.', variant: 'error'})));
     };
 };
 

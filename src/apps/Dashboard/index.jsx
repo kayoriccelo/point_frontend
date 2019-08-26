@@ -52,7 +52,7 @@ export default function Dashboard() {
                 <div style={{ border: 0, borderBottom: '1px dashed #ccc', background: '#999', marginBottom: 10 }}></div>
                 <Card>
                     <CardHeader
-                        title="Point markings per journey"
+                        title="Point markings by journey"
                     />
                     <Chart
                         chartType="ColumnChart"

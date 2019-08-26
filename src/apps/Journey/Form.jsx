@@ -35,7 +35,7 @@ export const Form = ({ id, instance, load, save, setTitle, history }) => {
 
     return (
         journey &&
-        <Card>
+        <Card style={{ height: 'calc(100vh - 160px)', overflow: 'auto' }}>
             <CardContent>
                 <InputText label="Code" value={journey.code} handleChange={(e) => handleChange(e, 'code')} />
 
@@ -54,7 +54,7 @@ export const Form = ({ id, instance, load, save, setTitle, history }) => {
             <CardActions>
                 <div style={{ marginLeft: 'auto' }}>
                     <Button
-                        size="small" variant="contained" color="error"
+                        size="small" variant="contained" color="secondary"
                         onClick={() => history.push('/registration/journey')}
                     > Cancel </Button>
                     <Button
