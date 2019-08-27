@@ -31,26 +31,24 @@ export const Form = ({ instance, load, update, setTitle, history }) => {
 
     return (
         company &&
-        <Card style={{ height: 'calc(100vh - 160px)', overflow: 'auto' }}>
-            <CardContent>
-                <div>
-                    <InputText label="Cnpj" value={company.cnpj} handleChange={(e) => handleChange(e, 'cnpj')} />
+        <Card style={{ overflow: 'auto' }}>
+            <CardContent style={{ height: 'calc(90vh - 160px)' }}>
+                <InputText label="Cnpj" value={company.cnpj} handleChange={(e) => handleChange(e, 'cnpj')} />
 
-                    <InputText label="Business Name" value={company.business_name} handleChange={(e) => handleChange(e, 'business_name')} />
+                <InputText label="Business Name" value={company.business_name} handleChange={(e) => handleChange(e, 'business_name')} />
 
-                    <InputText label="Email" value={company.email} handleChange={(e) => handleChange(e, 'email')} />
+                <InputText label="Email" value={company.email} handleChange={(e) => handleChange(e, 'email')} />
 
-                    <InputText label="Phone" value={company.phone} handleChange={(e) => handleChange(e, 'phone')} />
-                </div>
+                <InputText label="Phone" value={company.phone} handleChange={(e) => handleChange(e, 'phone')} />
             </CardContent>
-            <CardActions>
+            <CardActions >
                 <div style={{ marginLeft: 'auto' }}>
                     <Button
-                        size="small" variant="contained" color="secondary"
+                        size="small" variant="contained" color="secondary" style={{ margin: 4 }}
                         onClick={() => history.push('/dashboad')}
                     > Cancel </Button>
                     <Button
-                        size="small" variant="contained" color="primary" style={{ margin: 8 }}
+                        size="small" variant="contained" color="primary" style={{ margin: 4, marginRight: 8 }}
                         onClick={handlerSubmit}
                     > Save </Button>
                 </div>

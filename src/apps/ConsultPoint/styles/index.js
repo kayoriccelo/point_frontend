@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
     rootHeader: {
-        marginBottom: 15
+        marginBottom: 15,
     },
     paperHeader: {
         display: 'flex',

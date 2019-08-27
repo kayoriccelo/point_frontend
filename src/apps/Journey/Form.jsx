@@ -35,8 +35,8 @@ export const Form = ({ id, instance, load, save, setTitle, history }) => {
 
     return (
         journey &&
-        <Card style={{ height: 'calc(100vh - 160px)', overflow: 'auto' }}>
-            <CardContent>
+        <Card style={{ overflow: 'auto' }}>
+             <CardContent style={{ height: 'calc(90vh - 160px)' }}>
                 <InputText label="Code" value={journey.code} handleChange={(e) => handleChange(e, 'code')} />
 
                 <InputText label="Description" value={journey.description} handleChange={(e) => handleChange(e, 'description')} />
@@ -54,11 +54,11 @@ export const Form = ({ id, instance, load, save, setTitle, history }) => {
             <CardActions>
                 <div style={{ marginLeft: 'auto' }}>
                     <Button
-                        size="small" variant="contained" color="secondary"
+                        size="small" variant="contained" color="secondary" style={{ margin: 4 }}
                         onClick={() => history.push('/registration/journey')}
                     > Cancel </Button>
                     <Button
-                        size="small" variant="contained" color="primary" style={{ margin: 8 }}
+                        size="small" variant="contained" color="primary" style={{ margin: 4, marginRight: 8 }}
                         onClick={handlerSubmit}
                     > Save </Button>
                 </div>
