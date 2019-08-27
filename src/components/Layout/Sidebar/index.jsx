@@ -7,14 +7,18 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { ExpandLess, ExpandMore } from '@material-ui/icons';
 
 import useStyles from './styles';
-import { setOpenBar } from './store/ducks';
+import { setOpenBar, loadUser } from './store/ducks';
 import { menus } from "../../../routes/menus";
 
 
-export const Sidebar = ({ history, openBar, setOpenBar }) => {
+export const Sidebar = ({ history, user, openBar, setOpenBar, loadUser }) => {
     const classes = useStyles();
 
     const [open, setOpen] = useState(false)
+
+    useEffect(() => {
+        loadUser()
+    }, [loadUser]);
 
     useEffect(() => {
         window.innerWidth <= 500 && setOpenBar(false);
@@ -70,12 +74,18 @@ export const Sidebar = ({ history, openBar, setOpenBar }) => {
                     </ListSubheader>
                 }
             >
-                {menus.map(item => renderMenuItem(item))}
+                {menus.map(item => {
+                    if (item.roles.indexOf(user.role) > -1) {
+                        return renderMenuItem(item);
+                    };
+
+                    return false
+                })}
             </List>
         </Drawer>
     );
 };
 
-const mapStateToProps = ({ sidebar }) => ({ openBar: sidebar.openBar });
-const mapDispatchToProps = (dispatch) => bindActionCreators({ setOpenBar }, dispatch);
+const mapStateToProps = ({ sidebar, auth }) => ({ openBar: sidebar.openBar, user: auth.user });
+const mapDispatchToProps = (dispatch) => bindActionCreators({ setOpenBar, loadUser }, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);

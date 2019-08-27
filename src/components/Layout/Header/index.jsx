@@ -11,7 +11,7 @@ import useStyles from './styles';
 import { setOpenBar } from './store/ducks';
 
 
-export const Header = ({ history, title, openBar, setOpenBar }) => {
+export const Header = ({ history, user, title, openBar, setOpenBar }) => {
     const classes = useStyles();
 
     return (
@@ -34,13 +34,13 @@ export const Header = ({ history, title, openBar, setOpenBar }) => {
                     localStorage.clear();
                     history.push('/login');
                 }}>
-                    <ExitToApp />
+                    <div style={{ fontSize: 14, paddingRight: 6 }}>{user.name}</div> <ExitToApp />
                 </IconButton>
             </Toolbar>
         </AppBar>
     );
 };
 
-const mapStateToProps = ({ header, sidebar }) => ({ title: header.title, openBar: sidebar.openBar });
+const mapStateToProps = ({ header, sidebar, auth }) => ({ user: auth.user, title: header.title, openBar: sidebar.openBar });
 const mapDispatchToProps = (dispatch) => bindActionCreators({ setOpenBar }, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

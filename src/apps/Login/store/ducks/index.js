@@ -20,10 +20,6 @@ export function authenticate(username, password, history) {
                     isLogged: true,
                     access: res.data.access,
                     refresh: res.data.refresh,
-                    user: {
-                        name: res.data.name,
-                        cpf: res.data.cpf
-                    }
                 }
             });
 
@@ -41,8 +37,7 @@ export function authenticate(username, password, history) {
 export const initialState = {
     isLogged: false,
     access: null,
-    refresh: null,
-    user: {},
+    refresh: null
 };
 
 export default function reducer(state = initialState, action) {
