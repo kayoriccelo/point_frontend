@@ -28,7 +28,13 @@ export function authenticate(username, password, history) {
             });
 
             history.push('/dashboard');
-        }, error => dispatch(showMessage({ open: true , message: 'Not Authorized.', variant: 'error'})));
+        }, error => {
+            try {
+                dispatch(showMessage({ open: true, message: error.response.data.non_field_errors[0], variant: 'error' }));
+            } catch (e) {
+                dispatch(showMessage({ open: true, message: 'Not Authorized. ', variant: 'error' }));
+            };
+        });
     };
 };
 
