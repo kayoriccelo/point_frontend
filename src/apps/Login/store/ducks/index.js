@@ -20,23 +20,24 @@ export function authenticate(username, password, history) {
                     isLogged: true,
                     access: res.data.access,
                     refresh: res.data.refresh,
-                    user: {
-                        name: res.data.name,
-                        cpf: res.data.cpf
-                    }
                 }
             });
 
             history.push('/dashboard');
-        }, error => dispatch(showMessage({ open: true , message: 'Not Authorized.', variant: 'error'})));
+        }, error => {
+            try {
+                dispatch(showMessage({ open: true, message: error.response.data.non_field_errors[0], variant: 'error' }));
+            } catch (e) {
+                dispatch(showMessage({ open: true, message: 'Not Authorized. ', variant: 'error' }));
+            };
+        });
     };
 };
 
 export const initialState = {
     isLogged: false,
     access: null,
-    refresh: null,
-    user: {},
+    refresh: null
 };
 
 export default function reducer(state = initialState, action) {

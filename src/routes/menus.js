@@ -6,12 +6,14 @@ export const menus = [
     {
         title: 'Dashboard',
         path: '/dashboard',
-        icon: (<Dashboard style={{ color: '#24292e' }} />)
+        icon: (<Dashboard style={{ color: '#24292e' }} />),
+        roles: ['guest', 'admin']
     },
     {
         title: 'Registration',
         path: '/registration',
         icon: (<ViewList style={{ color: '#24292e' }} />),
+        roles: ['admin'],
         menus: [
             {
                 title: 'Company',
@@ -33,11 +35,13 @@ export const menus = [
     {
         title: 'Consult Point',
         path: '/consultpoint',
-        icon: (<Today style={{ color: '#24292e' }} />)
+        icon: (<Today style={{ color: '#24292e' }} />),
+        roles: ['admin'],
     },
     {
         title: 'Point Marking',
         path: '/pointmarking',
-        icon: (<Fingerprint style={{ color: 't#24292eeal' }} />)
+        icon: (<Fingerprint style={{ color: 't#24292eeal' }} />),
+        roles: ['guest', 'admin']
     },
 ];
