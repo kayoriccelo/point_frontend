@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Card, CardContent, CardActions, Button } from '@material-ui/core';
 
-import { InputText, InputPassword, SelectAsync } from '../../components';
+import { InputText, SelectAsync } from '../../components';
 import { load, save, createInstance, setTitle } from './store/ducks';
 
 
@@ -31,8 +31,6 @@ export const Form = ({ id, instance, load, save, setTitle, history }) => {
         setTitle(`Employee: ${employee.name}`);
     };
 
-    const handlePasswordChange = prop => event => setEmployee({ ...employee, [prop]: event.target.value });
-
     const handlerSubmit = () => save(employee, history);
 
     return (
@@ -45,12 +43,6 @@ export const Form = ({ id, instance, load, save, setTitle, history }) => {
 
                 <SelectAsync label="Journey" url="/api/journey" values={employee} fieldName="journey"
                     handleChange={(e) => handleChange(e, "journey")} />
-
-                <InputText label="Email" value={employee.email} handleChange={(e) => handleChange(e, 'email')} />
-
-                <InputText label="Username" value={employee.username} handleChange={(e) => handleChange(e, 'username')} />
-
-                <InputPassword label="New password" password={employee.new_password} handleChange={() => handlePasswordChange('new_password')} />
             </CardContent>
             <CardActions>
                 <div style={{ marginLeft: 'auto' }}>
