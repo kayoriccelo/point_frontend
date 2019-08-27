@@ -1,8 +1,9 @@
 import axios from 'axios';
 import axios2 from 'axios';
+import { rota } from '../env';
 
 axios.interceptors.request.use(config => {
-    config.baseURL = `https://apieletronicpoint.herokuapp.com`;
+    config.baseURL = rota;
 
     if (localStorage.getItem('access')) {
         config.headers.common['Authorization'] = `Bearer ${localStorage.getItem('access')}`;
@@ -40,7 +41,7 @@ axios.interceptors.response.use(
 );
 
 axios2.interceptors.request.use(config => {
-    config.baseURL = `https://apieletronicpoint.herokuapp.com`;
+    config.baseURL = rota;
     return config;
 }, error => {
     return Promise.reject(error);
