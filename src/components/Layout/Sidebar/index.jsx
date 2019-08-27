@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import clsx from 'clsx';
@@ -15,6 +15,10 @@ export const Sidebar = ({ history, openBar, setOpenBar }) => {
     const classes = useStyles();
 
     const [open, setOpen] = useState(false)
+
+    useEffect(() => {
+        window.innerWidth <= 500 && setOpenBar(false);
+    }, [setOpenBar]);
 
     const renderMenuItem = (item, is_sub_menu = false) => {
 
