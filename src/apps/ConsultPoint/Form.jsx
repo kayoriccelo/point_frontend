@@ -12,9 +12,9 @@ export const Form = ({ instance, load, setTitle, match }) => {
     const columns = [
         { field: 'date', label: 'Date' },
         { field: 'entry', label: 'Entry' },
-        { field: 'interval_output', label: 'Interval Output'},
-        { field: 'return_interval', label: 'Return Interval'},
-        { field: 'leave', label: 'Leave'},
+        { field: 'interval_output', label: 'Interval Output' },
+        { field: 'return_interval', label: 'Return Interval' },
+        { field: 'leave', label: 'Leave' },
     ];
     const classes = useStyles();
     const [consultpoint, setPoints] = useState(null)
@@ -31,27 +31,31 @@ export const Form = ({ instance, load, setTitle, match }) => {
 
         return () => setTitle('Dashboard');
     }, [instance, setTitle]);
-    
+
 
     return (consultpoint &&
         <>
             <div className={classes.rootHeader}>
                 <Paper className={classes.paperHeader}>
-                    <Grid 
+                    <Grid
                         container
-                        direction="column"
-                        justify="center"
                         style={{ padding: 10 }}
                     >
-                        <div style={{ paddingBottom: 5 }}><b>Cpf:</b> {consultpoint.cpf}</div>
-                        <div style={{ paddingBottom: 5 }}><b>Name:</b> {consultpoint.name}</div>
-                        <div style={{ paddingBottom: 5 }}><b>Journey:</b> {consultpoint.journey}</div>
+                        <Grid item xs={12} sm={4} style={{ paddingBottom: 4 }}>
+                            <b>Cpf:</b> {consultpoint.cpf}
+                        </Grid>
+                        <Grid item xs={12} sm={8} style={{ paddingBottom: 4 }}>
+                            <b>Name:</b> {consultpoint.name}
+                        </Grid>
+                        <Grid item xs={12}>
+                            <b>Journey:</b> {consultpoint.journey}
+                        </Grid>
                     </Grid>
                 </Paper>
             </div>
             <TableList
                 columns={columns}
-                data={{itens: consultpoint.points }}
+                data={{ itens: consultpoint.points }}
                 is_pagination={false}
             />
         </>

@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
     rootTable: {
-        maxHeight: 800,
         overflow: 'auto',
         margin: 2
     },
@@ -25,7 +24,7 @@ const useStyles = makeStyles({
         width: 1,
     },
     card: {
-        maxHeight: 'calc(82vh - 120px)',
+        height: window.innerWidth <=780 ? `calc(90vh - 200px)` : `calc(90vh - 125px)`,
         overflowX: 'auto',
         overflowY: 'visible'
     }
