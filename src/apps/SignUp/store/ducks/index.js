@@ -10,7 +10,7 @@ export const Types = {
 
 export function save(user, history) {
     return dispatch => {
-        return apiNotToken.post('api/user-custom/', user).then(res => {
+        return apiNotToken.post('api/user/', user).then(res => {
 
             dispatch({
                 type: Types.SIGNUP,
@@ -18,7 +18,13 @@ export function save(user, history) {
             });
 
             history.push('/login');
-        }, error => dispatch(showMessage({ open: true, message: 'Not Authorized.', variant: 'error' })));
+        }, error => {
+            try {
+                dispatch(showMessage({ open: true, message: error.response.data.non_field_errors[0], variant: 'error' }));
+            } catch (e) {
+                dispatch(showMessage({ open: true, message: 'Not Authorized. ', variant: 'error' }));
+            };
+        });
     };
 };
 

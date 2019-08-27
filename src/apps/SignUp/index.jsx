@@ -11,15 +11,25 @@ import { InputText, InputPassword, Message } from '../../components';
 
 const SignUp = ({ save, history, showMessage }) => {
     const classes = useStyles();
-    const [values, setValue] = useState({ username: '', password: '', email: '', showPassword: false });
+    const [values, setValue] = useState(
+        {
+            cpf: '',
+            first_name: '',
+            last_name: '',
+            email: '',
+            username: '',
+            password: '',
+            showPassword: false
+        }
+    );
 
     const handleChange = prop => event => setValue({ ...values, [prop]: event.target.value });
 
     const clickSignUp = () => {
-        const { username, password } = values;
+        const { cpf, first_name, last_name, email, username, password } = values;
 
-        if (username !== '' && password !== '') {
-            save(username, password, history);
+        if (cpf !== '' && first_name !== '' && last_name !== '' && email !== '' && username !== '' && password !== '') {
+            save(values, history);
         } else {
             showMessage({ message: 'Required fields.', variant: 'warning', open: true });
         };
@@ -45,7 +55,14 @@ const SignUp = ({ save, history, showMessage }) => {
                             <InputText label="Last Name *" value={values['last_name']} handleChange={handleChange('last_name')} />
                         </Grid>
                     </div>
-
+                    <div style={{ display: 'flex', flexDirection: 'row' }}>
+                        <Grid item xs={12} sm={6} style={{ marginRight: 4 }}>
+                            <InputText label="Username *" value={values['username']} handleChange={handleChange('username')} />
+                        </Grid>
+                        <Grid item xs={12} sm={6} style={{ marginLeft: 4 }}>
+                            <InputText label="Cpf *" value={values['cpf']} handleChange={handleChange('cpf')} />
+                        </Grid>
+                    </div>
                     <Grid item xs={12}>
                         <InputText label="Email Address *" value={values['email']} handleChange={handleChange('email')} />
                     </Grid>
