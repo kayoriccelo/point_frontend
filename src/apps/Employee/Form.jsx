@@ -37,7 +37,7 @@ export const Form = ({ id, instance, load, save, setTitle, history }) => {
 
     return (
         employee &&
-        <Card>
+        <Card style={{ height: 'calc(100vh - 160px)', overflow: 'auto' }}>
             <CardContent>
                 <InputText label="Cpf" value={employee.cpf} handleChange={(e) => handleChange(e, 'cpf')} />
 
@@ -54,8 +54,16 @@ export const Form = ({ id, instance, load, save, setTitle, history }) => {
 
             </CardContent>
             <CardActions>
-                <Button size="small" color="primary" onClick={handlerSubmit}> Save </Button>
-                <Button size="small" color="primary" onClick={() => history.push('/registration/journey')}> Cancel </Button>
+                <div style={{ marginLeft: 'auto' }}>
+                    <Button
+                        size="small" variant="contained" color="secondary"
+                        onClick={() => history.push('/registration/employee')}
+                    > Cancel </Button>
+                    <Button
+                        size="small" variant="contained" color="primary" style={{ margin: 8 }}
+                        onClick={handlerSubmit}
+                    > Save </Button>
+                </div>
             </CardActions>
         </Card>
     );

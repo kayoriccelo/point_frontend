@@ -16,7 +16,7 @@ export const Types = {
 export function createInstance() {
     return {
         cpf: null,
-        nome: '',
+        name: '',
     };
 };
 

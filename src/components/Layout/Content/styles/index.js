@@ -5,7 +5,8 @@ const useStyles = makeStyles(theme => ({
         height: '100%',
         width: '100%',
         margin: theme.spacing(2),
-        overflowX: 'auto', overflowY: 'visible'
+        overflowX: 'auto', 
+        overflowY: 'visible',
     },
     content: {
         padding: 4,
