@@ -1,8 +1,9 @@
 import axios from 'axios';
 import axios2 from 'axios';
+import { rota } from '../env';
 
 axios.interceptors.request.use(config => {
-    config.baseURL = `http://127.0.0.1:8000`;
+    config.baseURL = rota;
 
     if (localStorage.getItem('access')) {
         config.headers.common['Authorization'] = `Bearer ${localStorage.getItem('access')}`;
@@ -30,14 +31,17 @@ axios.interceptors.response.use(
                 localStorage.clear();
                 return Promise.reject(error);
             });
+        } else if (status === 401) {
+            localStorage.clear();
+            return Promise.reject(error);
         };
-        
+
         return Promise.reject(error);
     }
 );
 
 axios2.interceptors.request.use(config => {
-    config.baseURL = `http://127.0.0.1:8000`;
+    config.baseURL = rota;
     return config;
 }, error => {
     return Promise.reject(error);

@@ -11,7 +11,7 @@ export const Form = ({ id, instance, load, save, setTitle, history }) => {
     const [journey, setJourney] = useState(null);
 
     useEffect(() => {
-        journey && setTitle(`Journey: ${journey.descricao}`);
+        journey && setTitle(`Journey: ${journey.description}`);
 
         return () => setTitle(`Dashboard`);
     }, [journey, setTitle]);
@@ -35,12 +35,12 @@ export const Form = ({ id, instance, load, save, setTitle, history }) => {
 
     return (
         journey &&
-        <Card>
+        <Card style={{ height: 'calc(100vh - 160px)', overflow: 'auto' }}>
             <CardContent>
                 <InputText label="Code" value={journey.code} handleChange={(e) => handleChange(e, 'code')} />
 
                 <InputText label="Description" value={journey.description} handleChange={(e) => handleChange(e, 'description')} />
-                
+
                 <InputTime label="Entry" fieldName="entry" value={journey.entry} handleChange={handleChange} />
 
                 <InputTime label="Interval Output" fieldName="interval_output" value={journey.interval_output} handleChange={handleChange} />
@@ -52,8 +52,16 @@ export const Form = ({ id, instance, load, save, setTitle, history }) => {
                 <CheckboxCustom label="Has Remunerated Rest" fieldName="has_remunerated_rest" value={journey.has_remunerated_rest} handleChange={handleChange} />
             </CardContent>
             <CardActions>
-                <Button size="small" color="primary" onClick={handlerSubmit}> Save </Button>
-                <Button size="small" color="primary" onClick={() => history.push('/registration/journey')}> Cancel </Button>
+                <div style={{ marginLeft: 'auto' }}>
+                    <Button
+                        size="small" variant="contained" color="secondary"
+                        onClick={() => history.push('/registration/journey')}
+                    > Cancel </Button>
+                    <Button
+                        size="small" variant="contained" color="primary" style={{ margin: 8 }}
+                        onClick={handlerSubmit}
+                    > Save </Button>
+                </div>
             </CardActions>
         </Card>
     );

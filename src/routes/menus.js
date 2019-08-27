@@ -6,12 +6,12 @@ export const menus = [
     {
         title: 'Dashboard',
         path: '/dashboard',
-        icon: (<Dashboard />)
+        icon: (<Dashboard style={{ color: '#24292e' }} />)
     },
     {
         title: 'Registration',
         path: '/registration',
-        icon: (<ViewList />),
+        icon: (<ViewList style={{ color: '#24292e' }} />),
         menus: [
             {
                 title: 'Company',
@@ -33,11 +33,11 @@ export const menus = [
     {
         title: 'Consult Point',
         path: '/consultpoint',
-        icon: (<Today />)
+        icon: (<Today style={{ color: '#24292e' }} />)
     },
     {
         title: 'Point Marking',
         path: '/pointmarking',
-        icon: (<Fingerprint />)
+        icon: (<Fingerprint style={{ color: 't#24292eeal' }} />)
     },
 ];
