@@ -6,6 +6,17 @@ const useStyles = makeStyles({
         overflow: 'auto',
         margin: 2
     },
+    card: {
+        height: window.innerWidth <= 780 ? `calc(100vh - 220px)` : `calc(90vh - 140px)`,
+        minWidth: 450,
+        overflowX: 'auto',
+        overflowY: 'visible'
+    },
+    cardNotPagination: {
+        height: window.innerWidth <= 780 ? `calc(80vh - 180px)` : `calc(90vh - 150px)`,
+        overflowX: 'auto',
+        overflowY: 'visible'
+    },
     tableCell: {
         fontWeight: 'bold',
         fontSize: 14,
@@ -23,11 +34,6 @@ const useStyles = makeStyles({
         top: 20,
         width: 1,
     },
-    card: {
-        height: window.innerWidth <=780 ? `calc(90vh - 200px)` : `calc(90vh - 125px)`,
-        overflowX: 'auto',
-        overflowY: 'visible'
-    }
 });
 
 export default useStyles;
