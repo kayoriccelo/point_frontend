@@ -3,12 +3,13 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { SearchList, TableList } from '../../components';
+import { maskCpf } from '../../components/InputText/masks';
 import { getList, deleteItem, setTitle } from './store/ducks';
 
 
 export const List = ({ data, page, pageSize, getList, deleteItem, setTitle, history }) => {
     const columns = [
-        { field: 'cpf', label: 'Cpf', is_edit: true },
+        { field: 'cpf', label: 'Cpf', is_edit: true, mask: maskCpf },
         { field: 'name', label: 'Name' },
         { field: 'actions', label: 'Actions' }
     ];
@@ -38,7 +39,7 @@ export const List = ({ data, page, pageSize, getList, deleteItem, setTitle, hist
 
     const clickAdd = () => history.push('/registration/employee/new');
 
-    const clickDelete = id => deleteItem(id, getList);
+    const clickDelete = id => deleteItem(id, 0, pageSize);
 
     return (
         <>

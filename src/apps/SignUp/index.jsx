@@ -23,7 +23,7 @@ const SignUp = ({ save, history, showMessage }) => {
         }
     );
 
-    const handleChange = prop => event => setValue({ ...values, [prop]: event.target.value });
+    const handleChange = name => event => setValue({ ...values, [name]: event.target.value });
 
     const clickSignUp = () => {
         const { cpf, first_name, last_name, email, username, password } = values;

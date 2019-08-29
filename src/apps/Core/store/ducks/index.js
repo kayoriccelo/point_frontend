@@ -35,7 +35,11 @@ export function saveDefault(instance, model, type, history, path) {
             dispatch(showMessage({ open: true, message: 'Record successfully saved.', variant: 'success' }));
             history.push(path);
         }, error => {
-            dispatch(showMessage({ open: true, message: 'Unable to save record.', variant: 'error' }));
+            try {
+                dispatch(showMessage({ open: true, message: error.response.data.non_field_errors[0], variant: 'error' }));
+            } catch (e) {
+                dispatch(showMessage({ open: true, message: 'Unable to save record. ', variant: 'error' }));
+            };
         });
     };
 };

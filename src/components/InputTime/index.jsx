@@ -15,7 +15,7 @@ export default function InputTime({ fieldName, value, label, handleChange }) {
             inputProps={{ step: 300 }}
             type="time"
             label={label}
-            onChange={(e) => handleChange(e, fieldName)}
+            onChange={e => handleChange(fieldName)(e)}
         />
     )
 }

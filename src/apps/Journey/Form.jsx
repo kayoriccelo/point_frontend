@@ -25,7 +25,7 @@ export const Form = ({ id, instance, load, save, setTitle, history }) => {
         };
     }, [journey, instance, id, load]);
 
-    const handleChange = (event, name) => {
+    const handleChange = (name) => event => {
         setJourney({ ...journey, [name]: event.target.value });
         setTitle(`Journey: ${journey.descricao}`);
     };
@@ -36,9 +36,9 @@ export const Form = ({ id, instance, load, save, setTitle, history }) => {
             handlerSubmit={() => save(journey, history)}
             handlerCancel={() => history.push('/registration/journey')}
         >
-            <InputText label="Code" value={journey.code} handleChange={(e) => handleChange(e, 'code')} />
+            <InputText label="Code" maxLength="10" value={journey.code} handleChange={handleChange('code')} />
 
-            <InputText label="Description" value={journey.description} handleChange={(e) => handleChange(e, 'description')} />
+            <InputText label="Description" maxLength="140" value={journey.description} handleChange={handleChange('description')} />
 
             <InputTime label="Entry" fieldName="entry" value={journey.entry} handleChange={handleChange} />
 

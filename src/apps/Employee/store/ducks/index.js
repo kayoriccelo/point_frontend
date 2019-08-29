@@ -1,6 +1,7 @@
 import { setTitle } from '../../../../components/Layout/Header/store/ducks';
 import { showMessage } from '../../../../components/Message/store/ducks';
 import { getListDefault, loadDefault, saveDefault, deleteDefault } from '../../../Core/store/ducks';
+import { setPages } from '../../../../components/TablePagination/store/ducks';
 
 
 export { setTitle };
@@ -15,7 +16,7 @@ export const Types = {
 
 export function createInstance() {
     return {
-        cpf: null,
+        cpf: '',
         name: '',
     };
 };
@@ -26,11 +27,12 @@ export const load = (id) => loadDefault(id, 'employee', Types.GET)
 
 export const save = (employee, history) => saveDefault(employee, 'employee', Types.POST, history, '/registration/employee');
 
-export const deleteItem = (id) => {
+export const deleteItem = (id, page, pageSize) => {
     return dispatch => {
         deleteDefault(id, 'employee').then(res => {
             dispatch(showMessage({ open: true, message: 'Record successfully deleted.', variant: 'success' }));
-            dispatch(getList());
+            dispatch(getList(page, pageSize));
+            dispatch(setPages(page, pageSize));
         }, error => {
             dispatch(showMessage({ open: true, message: 'Unable to delete record.', variant: 'error' }));
         });
