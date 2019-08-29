@@ -31,7 +31,7 @@ export const List = ({ data, page, pageSize, getList, deleteItem, setTitle, hist
     const onSearch = event => {
         clearTimeout(timer);
         setSearch(event.target.value);
-        timer = setTimeout(() => getList(search), 1500);
+        timer = setTimeout(() => getList(page, pageSize, search), 1500);
     };
 
     const clickAdd = () => history.push('/registration/employee/new');
