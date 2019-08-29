@@ -1,7 +1,8 @@
 import { setOpenBar } from '../../../Sidebar/store/ducks';
+import { logout } from '../../../../../apps/Login/store/ducks';
 
 
-export { setOpenBar };
+export { setOpenBar, logout };
 
 const Types = {
     SET_TITLE: 'header/SET_TITLE',

@@ -1,7 +1,3 @@
-import { loadUser } from '../../../../../auth/store/ducks';
-
-
-export { loadUser };
 
 const Types = {
     SET_OPEN_BAR: 'sidebar/SET_OPEN_BAR',

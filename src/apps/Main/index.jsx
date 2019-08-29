@@ -16,7 +16,7 @@ export default function Main({ history }) {
             <Header history={history} />
             <div className={classes.main}>
                 <Sidebar history={history} />
-                <Content />
+                <Content history={history}/>
             </div>
             <Footer />
             <Message />

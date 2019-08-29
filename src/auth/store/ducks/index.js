@@ -8,10 +8,11 @@ export const Types = {
     USER: 'auth/USER',
 };
 
-export function loadUser() {
+export function loadUser(history) {
     return dispatch => {
         return api.get('/api/usertoken/').then(res => {
             dispatch({ type: Types.USER, payload: res.data.results[0] })
+            history.push('dashboard');
         }, error => {
             try {
                 dispatch(showMessage({ open: true, message: error.response.data.non_field_errors[0], variant: 'error' }));
@@ -24,7 +25,8 @@ export function loadUser() {
 
 export const initialState = {
     user: {
-        role: 'guest'
+        role: 'guest',
+        isAuthenticated: false,
     }
 };
 
