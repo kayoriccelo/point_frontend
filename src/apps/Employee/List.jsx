@@ -38,7 +38,7 @@ export const List = ({ data, page, pageSize, getList, deleteItem, setTitle, hist
 
     const clickAdd = () => history.push('/registration/employee/new');
 
-    const clickDelete = id => deleteItem(id, getList);
+    const clickDelete = id => deleteItem(id, 0, pageSize);
 
     return (
         <>
