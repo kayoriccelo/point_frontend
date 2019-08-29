@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -12,8 +12,8 @@ export const List = ({ data, page, pageSize, getList, deleteItem, setTitle, hist
         { field: 'description', label: 'Description' },
         { field: 'actions', label: 'Actions' }
     ];
-    const [search, setSearch] = useState('');
     let timer = null;
+    let search = '';
 
     useEffect(() => {
         getList(page, pageSize);
@@ -30,7 +30,8 @@ export const List = ({ data, page, pageSize, getList, deleteItem, setTitle, hist
 
     const onSearch = event => {
         clearTimeout(timer);
-        setSearch(event.target.value);
+        
+        search = event.target.value;
         timer = setTimeout(() => getList(page, pageSize, search), 1500);
     };
 
