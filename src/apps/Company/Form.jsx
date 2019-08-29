@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { FormCustom, InputText } from '../../components';
+import { maskCnpj, maskPhone } from '../../components/InputText/masks';
 import { load, update, setTitle } from './store/ducks';
 
 
@@ -21,7 +22,7 @@ export const Form = ({ instance, load, update, setTitle, history }) => {
         });
     }, [company, instance, load]);
 
-    const handleChange = (event, name) => {
+    const handleChange = (name) => event => {
         setCompany({ ...company, [name]: event.target.value });
         setTitle(`Company: ${company.business_name}`);
     };
@@ -32,13 +33,13 @@ export const Form = ({ instance, load, update, setTitle, history }) => {
             handlerSubmit={() => update(company, history)}
             handlerCancel={() => history.push('/dashboad')}
         >
-            <InputText label="Cnpj" value={company.cnpj} handleChange={(e) => handleChange(e, 'cnpj')} />
+            <InputText label="Cnpj" maxLength="18" value={maskCnpj(company.cnpj)} handleChange={handleChange('cnpj')} />
 
-            <InputText label="Business Name" value={company.business_name} handleChange={(e) => handleChange(e, 'business_name')} />
+            <InputText label="Business Name" maxLength="14" value={company.business_name} handleChange={handleChange('business_name')} />
 
-            <InputText label="Email" value={company.email} handleChange={(e) => handleChange(e, 'email')} />
+            <InputText label="Email" maxLength="100" value={company.email} handleChange={handleChange('email')} />
 
-            <InputText label="Phone" value={company.phone} handleChange={(e) => handleChange(e, 'phone')} />
+            <InputText label="Phone" maxLength="15" value={maskPhone(company.phone)} handleChange={handleChange('phone')} />
         </FormCustom>
     );
 };

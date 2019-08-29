@@ -1,6 +1,7 @@
 import { setTitle } from '../../../../components/Layout/Header/store/ducks';
-import { getListDefault, loadDefault, saveDefault, deleteDefault } from '../../../Core/store/ducks';
 import { showMessage } from '../../../../components/Message/store/ducks';
+import { getListDefault, loadDefault, saveDefault, deleteDefault } from '../../../Core/store/ducks';
+import { setPages } from '../../../../components/TablePagination/store/ducks';
 
 
 export { setTitle };
@@ -31,11 +32,12 @@ export const load = (id) => loadDefault(id, 'journey', Types.GET)
 
 export const save = (jornada, history) => saveDefault(jornada, 'journey', Types.POST, history, '/registration/journey');
 
-export const deleteItem = (id) => {
+export const deleteItem = (id, page, pageSize) => {
     return dispatch => {
         deleteDefault(id, 'journey').then(res => {
             dispatch(showMessage({ open: true, message: 'Record successfully deleted.', variant: 'success' }));
-            dispatch(getList());
+            dispatch(getList(page, pageSize));
+            dispatch(setPages(page, pageSize));
         }, error => {
             dispatch(showMessage({ open: true, message: 'Unable to delete record.', variant: 'error' }));
         });
