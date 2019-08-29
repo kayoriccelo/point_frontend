@@ -6,6 +6,7 @@ import { Grid, Paper } from '@material-ui/core';
 import useStyles from './styles';
 import { load, setTitle, showMessage } from './store/ducks';
 import { TableList } from '../../components';
+import { maskCpf } from '../../components/InputText/masks';
 
 
 export const Form = ({ instance, load, setTitle, match }) => {
@@ -42,7 +43,7 @@ export const Form = ({ instance, load, setTitle, match }) => {
                         style={{ padding: 10 }}
                     >
                         <Grid item xs={12} sm={4} style={{ paddingBottom: 4 }}>
-                            <b>Cpf:</b> {consultpoint.cpf}
+                            <b>Cpf:</b> {maskCpf(consultpoint.cpf)}
                         </Grid>
                         <Grid item xs={12} sm={8} style={{ paddingBottom: 4 }}>
                             <b>Name:</b> {consultpoint.name}

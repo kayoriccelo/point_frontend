@@ -4,7 +4,7 @@ import { TextField } from '@material-ui/core';
 import useStyles from './styles';
 
 
-export default function InputCustom({ value, label, handleChange }) {
+export default function InputCustom({ value, label, maxLength, handleChange }) {
     const classes = useStyles();
 
     return (
@@ -14,6 +14,9 @@ export default function InputCustom({ value, label, handleChange }) {
             variant="outlined"
             type='text'
             label={label}
+            inputProps={{
+                maxLength: maxLength,
+              }}
             onChange={handleChange} />
     );
 };

@@ -71,7 +71,7 @@ export default function TableList({ columns, data, actions, path, is_pagination 
                                             return (
                                                 <TableCell key={`${item.id}-${index}`}>
                                                     <Link to={`${path}${itemValue}${paramValue}`}>
-                                                        {item[column.field]}
+                                                        {column.mask ? column.mask(item[column.field]) : item[column.field]}
                                                     </Link>
                                                 </TableCell>
                                             )
@@ -84,7 +84,7 @@ export default function TableList({ columns, data, actions, path, is_pagination 
                                                 </TableCell>
                                             )
                                         } else {
-                                            return <TableCell key={`${item.id}-${index}`}>{item[column['field']]}</TableCell>
+                                            return <TableCell key={`${item.id}-${index}`}>{column.mask ? column.mask(item[column.field]) : item[column.field]}</TableCell>
                                         };
                                     })}
                                 </TableRow>

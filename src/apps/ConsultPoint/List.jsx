@@ -4,11 +4,12 @@ import { bindActionCreators } from 'redux';
 
 import { getList, setRangeDate, setTitle } from './store/ducks';
 import { SearchList, TableList, InputDate } from '../../components';
+import { maskCpf } from '../../components/InputText/masks';
 
 
 export const List = ({ range_date, data, page, pageSize, getList, setRangeDate, setTitle }) => {
     const columns = [
-        { field: 'cpf', label: 'Cpf', is_edit: true },
+        { field: 'cpf', label: 'Cpf', is_edit: true, mask: maskCpf },
         { field: 'name', label: 'Name' },
         { field: 'journey_display', label: 'Journey' }
     ];

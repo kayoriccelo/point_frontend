@@ -5,6 +5,7 @@ import { Grid, Card, CardContent, Button } from "@material-ui/core";
 
 import { save, setTitle } from "./store/ducks";
 import { InputText, InputPassword, SelectCustom } from '../../components';
+import { maskCpf } from '../../components/InputText/masks';
 import useStyles from "./styles";
 
 
@@ -28,9 +29,9 @@ export const Form = ({ save, setTitle }) => {
         }, 1000);
     });
 
-    const handleChange = (event, name) => setPointMarking({ ...pointMarking, [name]: event.target.value });
+    const handleChange = name => event => setPointMarking({ ...pointMarking, [name]: event.target.value });
 
-    const handlePasswordChange = prop => event => setPointMarking({ ...pointMarking, [prop]: event.target.value });
+    const handlePasswordChange = name => event => setPointMarking({ ...pointMarking, [name]: event.target.value });
 
     const clickSubmit = () => save({ ...pointMarking, hour: currentTime }).then(res => setPointMarking({ cpf: '', password: '', type: '' }));
 
@@ -45,9 +46,9 @@ export const Form = ({ save, setTitle }) => {
                         { key: '2', value: 'RI', label: 'Return Interval' }, { key: '3', value: 'L', label: 'Leave' },
                     ]} />
 
-                    <InputText label="Cpf" value={pointMarking.cpf} handleChange={(e) => handleChange(e, "cpf")} />
+                    <InputText label="Cpf" maxLength="14" value={maskCpf(pointMarking.cpf)} handleChange={handleChange("cpf")} />
 
-                    <InputPassword password={pointMarking.password} handleChange={(e) => handlePasswordChange(e, 'password')} />
+                    <InputPassword password={pointMarking.password} handleChange={handlePasswordChange('password')} />
 
                     <Button key="submit" variant="contained" color="primary" className={classes.button} onClick={() => clickSubmit()}>
                         Submit

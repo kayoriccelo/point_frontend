@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { FormCustom, InputText, SelectAsync } from '../../components';
+import { maskCpf } from '../../components/InputText/masks';
 import { load, save, createInstance, setTitle } from './store/ducks';
 
 
@@ -25,7 +26,7 @@ export const Form = ({ id, instance, load, save, setTitle, history }) => {
         };
     }, [employee, instance, id, load]);
 
-    const handleChange = (event, name) => {
+    const handleChange = (name) => event => {
         setEmployee({ ...employee, [name]: event.target ? event.target.value : event });
         setTitle(`Employee: ${employee.name}`);
     };
@@ -36,12 +37,12 @@ export const Form = ({ id, instance, load, save, setTitle, history }) => {
             handlerSubmit={() => save(employee, history)}
             handlerCancel={() => history.push('/registration/employee')}
         >
-            <InputText label="Cpf" value={employee.cpf} handleChange={(e) => handleChange(e, 'cpf')} />
+            <InputText label="Cpf" maxLength="14" value={maskCpf(employee.cpf)} handleChange={handleChange('cpf')} />
 
-            <InputText label="Name" value={employee.name} handleChange={(e) => handleChange(e, 'name')} />
+            <InputText label="Name" maxLength="140" value={employee.name} handleChange={handleChange('name')} />
 
             <SelectAsync label="Journey" url="/api/journey" values={employee} fieldName="journey"
-                handleChange={(e) => handleChange(e, "journey")} />
+                handleChange={handleChange("journey")} />
         </FormCustom>
     );
 };
