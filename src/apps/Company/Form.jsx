@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Card, CardContent, CardActions, Button } from '@material-ui/core';
 
-import { InputText } from '../../components';
+import { FormCustom, InputText } from '../../components';
 import { load, update, setTitle } from './store/ducks';
 
 
@@ -27,33 +26,20 @@ export const Form = ({ instance, load, update, setTitle, history }) => {
         setTitle(`Company: ${company.business_name}`);
     };
 
-    const handlerSubmit = () => update(company, history);
-
     return (
         company &&
-        <Card style={{ overflow: 'auto' }}>
-            <CardContent style={{ height: 'calc(90vh - 160px)' }}>
-                <InputText label="Cnpj" value={company.cnpj} handleChange={(e) => handleChange(e, 'cnpj')} />
+        <FormCustom
+            handlerSubmit={() => update(company, history)}
+            handlerCancel={() => history.push('/dashboad')}
+        >
+            <InputText label="Cnpj" value={company.cnpj} handleChange={(e) => handleChange(e, 'cnpj')} />
 
-                <InputText label="Business Name" value={company.business_name} handleChange={(e) => handleChange(e, 'business_name')} />
+            <InputText label="Business Name" value={company.business_name} handleChange={(e) => handleChange(e, 'business_name')} />
 
-                <InputText label="Email" value={company.email} handleChange={(e) => handleChange(e, 'email')} />
+            <InputText label="Email" value={company.email} handleChange={(e) => handleChange(e, 'email')} />
 
-                <InputText label="Phone" value={company.phone} handleChange={(e) => handleChange(e, 'phone')} />
-            </CardContent>
-            <CardActions >
-                <div style={{ marginLeft: 'auto' }}>
-                    <Button
-                        size="small" variant="contained" color="secondary" style={{ margin: 4 }}
-                        onClick={() => history.push('/dashboad')}
-                    > Cancel </Button>
-                    <Button
-                        size="small" variant="contained" color="primary" style={{ margin: 4, marginRight: 8 }}
-                        onClick={handlerSubmit}
-                    > Save </Button>
-                </div>
-            </CardActions>
-        </Card>
+            <InputText label="Phone" value={company.phone} handleChange={(e) => handleChange(e, 'phone')} />
+        </FormCustom>
     );
 };
 
