@@ -11,7 +11,7 @@ export const Types = {
 
 export const load = () => loadDefault('-1', 'company', Types.GET);
 
-export const update = (company, history) => saveDefault(company, 'company', Types.PUT, history, '/');
+export const update = (company, history) => saveDefault(company, 'company', Types.PUT, history, '/dashboard');
 
 export const initialState = {
     instance: null,

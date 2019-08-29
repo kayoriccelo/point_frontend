@@ -30,7 +30,7 @@ export default function Dashboard() {
 
     return (
         data.length > 0 ? (
-            <>
+            <div style={{ height: 'calc(100vh - 150px)', overflow: 'auto' }}>
                 <Card>
                     <CardHeader
                         title="Employees by journey"
@@ -68,7 +68,7 @@ export default function Dashboard() {
                     />
                     <div style={{ textAlign: 'center' }}>*The graph is limited to the top 10 values.</div>
                 </Card>
-            </>
+            </div>
         ) : (
                 (
                     <div style={{ height: 'calc(80vh - 0px)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>

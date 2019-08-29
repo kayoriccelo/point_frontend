@@ -8,10 +8,11 @@ import MenuIcon from '@material-ui/icons/Menu';
 
 import useStyles from './styles';
 
-import { setOpenBar } from './store/ducks';
+import { setOpenBar, logout } from './store/ducks';
 
 
-export const Header = ({ history, user, title, openBar, setOpenBar }) => {
+
+export const Header = ({ user, title, logout, openBar, setOpenBar, history }) => {
     const classes = useStyles();
 
     return (
@@ -30,10 +31,7 @@ export const Header = ({ history, user, title, openBar, setOpenBar }) => {
                 <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
                     {title}
                 </Typography>
-                <IconButton color="inherit" onClick={() => {
-                    localStorage.clear();
-                    history.push('/login');
-                }}>
+                <IconButton color="inherit" onClick={() => logout(history)}>
                     <div style={{ fontSize: 14, paddingRight: 6 }}>{user.name}</div> <ExitToApp />
                 </IconButton>
             </Toolbar>
@@ -42,5 +40,5 @@ export const Header = ({ history, user, title, openBar, setOpenBar }) => {
 };
 
 const mapStateToProps = ({ header, sidebar, auth }) => ({ user: auth.user, title: header.title, openBar: sidebar.openBar });
-const mapDispatchToProps = (dispatch) => bindActionCreators({ setOpenBar }, dispatch);
+const mapDispatchToProps = (dispatch) => bindActionCreators({ logout, setOpenBar }, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

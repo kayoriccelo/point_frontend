@@ -7,18 +7,14 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { ExpandLess, ExpandMore } from '@material-ui/icons';
 
 import useStyles from './styles';
-import { setOpenBar, loadUser } from './store/ducks';
+import { setOpenBar } from './store/ducks';
 import { menus } from "../../../routes/menus";
 
 
-export const Sidebar = ({ history, user, openBar, setOpenBar, loadUser }) => {
+export const Sidebar = ({ history, user, openBar, setOpenBar }) => {
     const classes = useStyles();
 
     const [open, setOpen] = useState(false)
-
-    useEffect(() => {
-        loadUser()
-    }, [loadUser]);
 
     useEffect(() => {
         window.innerWidth <= 500 && setOpenBar(false);
@@ -87,5 +83,5 @@ export const Sidebar = ({ history, user, openBar, setOpenBar, loadUser }) => {
 };
 
 const mapStateToProps = ({ sidebar, auth }) => ({ openBar: sidebar.openBar, user: auth.user });
-const mapDispatchToProps = (dispatch) => bindActionCreators({ setOpenBar, loadUser }, dispatch);
+const mapDispatchToProps = (dispatch) => bindActionCreators({ setOpenBar }, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);
