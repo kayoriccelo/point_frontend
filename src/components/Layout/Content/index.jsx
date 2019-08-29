@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import { Switch, Redirect } from 'react-router-dom';
 
 import useStyles from './styles';
-import { routes } from '../../../routes';
-import PrivateRoute from '../../PrivateRoute'
+import PrivateRoute, { routes } from '../../../routes';
 
 
 export const Content = ({ user }) => {

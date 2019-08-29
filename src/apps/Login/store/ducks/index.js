@@ -1,11 +1,13 @@
 import { apiNotToken } from '../../../../services/api';
 import { showMessage } from '../../../../components/Message/store/ducks';
+import { loadUser } from '../../../../auth/store/ducks';
 
 
 export { showMessage };
 
 export const Types = {
     LOGIN: 'login/LOGIN',
+    LOGOUT: 'login/LOGOUT'
 };
 
 export function authenticate(username, password, history) {
@@ -14,16 +16,7 @@ export function authenticate(username, password, history) {
             localStorage.setItem('access', res.data.access);
             localStorage.setItem('refresh', res.data.refresh);
 
-            dispatch({
-                type: Types.LOGIN,
-                payload: {
-                    isLogged: true,
-                    access: res.data.access,
-                    refresh: res.data.refresh,
-                }
-            });
-
-            history.push('/dashboard');
+            dispatch(loadUser(history));
         }, error => {
             try {
                 dispatch(showMessage({ open: true, message: error.response.data.non_field_errors[0], variant: 'error' }));
@@ -34,16 +27,25 @@ export function authenticate(username, password, history) {
     };
 };
 
+export function logout(history) {
+    return dispatch => {
+        dispatch({ type: Types.LOGOUT, payload: false });
+        localStorage.clear();
+        history.push('login');
+    };
+};
+
 export const initialState = {
-    isLogged: false,
-    access: null,
-    refresh: null
+    isLogged: false
 };
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case Types.LOGIN:
-            return { ...state, ...action.payload };
+            return { ...state, isLogged: action.payload };
+
+        case Types.LOGOUT:
+            return { ...state, isLogged: action.payload };
 
         default:
             return state;
