@@ -41,14 +41,14 @@ export const Form = ({ save, setTitle }) => {
                 <CardContent className={classes.cardContent}>
                     <div className={classes.time}><b>{currentTime}</b></div>
 
-                    <SelectCustom label="Type" values={pointMarking} fieldName="type" handleChange={handleChange} options={[
+                    <SelectCustom label="Type" values={pointMarking} fieldName="type" handleChange={handleChange('type')} options={[
                         { key: '0', value: 'E', label: 'Entry' }, { key: '1', value: 'IO', label: 'Interval Output' },
                         { key: '2', value: 'RI', label: 'Return Interval' }, { key: '3', value: 'L', label: 'Leave' },
                     ]} />
 
                     <InputText label="Cpf" maxLength="14" value={maskCpf(pointMarking.cpf)} handleChange={handleChange("cpf")} />
 
-                    <InputPassword password={pointMarking.password} handleChange={handlePasswordChange('password')} />
+                    <InputPassword password={pointMarking.password} handleChange={handlePasswordChange} />
 
                     <Button key="submit" variant="contained" color="primary" className={classes.button} onClick={() => clickSubmit()}>
                         Submit
