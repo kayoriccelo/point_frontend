@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -12,7 +12,9 @@ export const List = ({ range_date, data, page, pageSize, getList, setRangeDate, 
         { field: 'name', label: 'Name' },
         { field: 'journey_display', label: 'Journey' }
     ];
-    const [search, setSearch] = useState('');
+
+    let timer = null;
+    let search = '';
 
     useEffect(() => {
         getList(page, pageSize);
@@ -24,12 +26,12 @@ export const List = ({ range_date, data, page, pageSize, getList, setRangeDate, 
         return () => setTitle('Dashboad');
     }, [getList, setTitle]);
 
-    const onSearch = (event) => {
-        let timer;
+    const onSearch = event => {
         clearTimeout(timer);
-        setSearch(event.target.value);
-        timer = setTimeout(() => getList(search), 1000);
-    };
+        
+        search = event.target.value;
+        timer = setTimeout(() => getList(page, pageSize, search), 1500);
+    }
 
     const setStart = (end, method) => e => method({ start: e.target.value, end });
 

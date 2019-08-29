@@ -1,22 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { Card, CardHeader, CircularProgress } from '@material-ui/core';
 import Chart from "react-google-charts";
 
-const data = [
-    ["Element", 'Test', { "role": "style" }],
-    ['Example 1', 10, 'fill-color: rgb(124, 181, 236); fill-opacity: 0.6;'],
-    ['Example 2', 20, 'fill-color: rgb(0, 134, 64); fill-opacity: 0.6;'],
-    ['Example 3', 30, 'fill-color: rgb(247, 163, 92); fill-opacity: 0.6;'],
-    ['Example 4', 40, 'fill-color: rgb(144, 237, 125); fill-opacity: 0.6;'],
-    ['Example 5', 50, 'fill-color: rgb(128, 133, 233); fill-opacity: 0.6;'],
-    ['Example 6', 60, 'fill-color: rgb(241, 92, 128); fill-opacity: 0.6;'],
-    ['Example 7', 70, 'fill-color: rgb(228, 211, 84); fill-opacity: 0.6;'],
-    ['Example 8', 80, 'fill-color: rgb(43, 144, 143); fill-opacity: 0.6;'],
-    ['Example 9', 90, 'fill-color: rgb(244, 91, 91); fill-opacity: 0.6;'],
-    ['Example 10', 100, 'fill-color: rgb(145, 232, 225); fill-opacity: 0.6;'],
-];
+import { load } from './store/ducks';
 
-export default function Dashboard() {
+
+export const Dashboard = ({ data, load }) => {
+    useEffect(() => {
+        load();
+    }, [load]);
+
     const options = {
         legend: "none",
         chartArea: { width: '90%' },
@@ -29,7 +24,7 @@ export default function Dashboard() {
     };
 
     return (
-        data.length > 0 ? (
+        data !== {} ? (
             <div style={{ height: 'calc(100vh - 150px)', overflow: 'auto' }}>
                 <Card>
                     <CardHeader
@@ -39,7 +34,7 @@ export default function Dashboard() {
                         chartType="ColumnChart"
                         width="100%"
                         height="100%"
-                        data={data}
+                        data={data['employees']}
                         options={{
                             ...options,
                             vAxis: {
@@ -58,7 +53,7 @@ export default function Dashboard() {
                         chartType="ColumnChart"
                         width="100%"
                         height="100%"
-                        data={data}
+                        data={data['points']}
                         options={{
                             ...options,
                             vAxis: {
@@ -79,3 +74,7 @@ export default function Dashboard() {
             )
     );
 };
+
+const mapStateToProps = ({ dashboard }) => ({ data: dashboard.data });
+const mapDispatchToProps = (dispatch) => bindActionCreators({ load }, dispatch);
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

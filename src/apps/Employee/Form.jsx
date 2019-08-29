@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Card, CardContent, CardActions, Button } from '@material-ui/core';
 
-import { InputText, SelectAsync } from '../../components';
+import { FormCustom, InputText, SelectAsync } from '../../components';
 import { load, save, createInstance, setTitle } from './store/ducks';
 
 
@@ -31,32 +30,19 @@ export const Form = ({ id, instance, load, save, setTitle, history }) => {
         setTitle(`Employee: ${employee.name}`);
     };
 
-    const handlerSubmit = () => save(employee, history);
-
     return (
         employee &&
-        <Card style={{ overflow: 'auto' }}>
-            <CardContent style={{ height: 'calc(90vh - 160px)' }}>
-                <InputText label="Cpf" value={employee.cpf} handleChange={(e) => handleChange(e, 'cpf')} />
+        <FormCustom
+            handlerSubmit={() => save(employee, history)}
+            handlerCancel={() => history.push('/registration/employee')}
+        >
+            <InputText label="Cpf" value={employee.cpf} handleChange={(e) => handleChange(e, 'cpf')} />
 
-                <InputText label="Name" value={employee.name} handleChange={(e) => handleChange(e, 'name')} />
+            <InputText label="Name" value={employee.name} handleChange={(e) => handleChange(e, 'name')} />
 
-                <SelectAsync label="Journey" url="/api/journey" values={employee} fieldName="journey"
-                    handleChange={(e) => handleChange(e, "journey")} />
-            </CardContent>
-            <CardActions>
-                <div style={{ marginLeft: 'auto' }}>
-                    <Button
-                        size="small" variant="contained" color="secondary"
-                        onClick={() => history.push('/registration/employee')} style={{ margin: 4 }}
-                    > Cancel </Button>
-                    <Button
-                        size="small" variant="contained" color="primary" style={{ margin: 4, marginRight: 8 }}
-                        onClick={handlerSubmit}
-                    > Save </Button>
-                </div>
-            </CardActions>
-        </Card>
+            <SelectAsync label="Journey" url="/api/journey" values={employee} fieldName="journey"
+                handleChange={(e) => handleChange(e, "journey")} />
+        </FormCustom>
     );
 };
 

@@ -50,7 +50,7 @@ export default function TableList({ columns, data, actions, path, is_pagination 
 
     return (
         <div className={classes.rootTable}>
-            <Card className={classes.card}>
+            <Card className={is_pagination ? classes.card : classes.cardNotPagination}>
                 <Table size="small">
                     <EnhancedTableHead
                         classes={classes}
