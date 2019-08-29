@@ -7,11 +7,11 @@ import { routes } from './routes';
 import { loadUser } from '../auth/store/ducks';
 
 
-const PrivateRoute = ({ isLogged, isAuthenticated, component: Component, history, loadUser, ...rest }) => {
+const PrivateRoute = ({ login, isAuthenticated, component: Component, history, loadUser, ...rest }) => {
     useEffect(() => {
-        isLogged && loadUser(history)
-    }, [isLogged, history, loadUser]);
-    
+        (login && !isAuthenticated) && loadUser(history)
+    }, [login, isAuthenticated, history, loadUser]);
+
     return (
         <Route {...rest} render={props =>
             isAuthenticated
@@ -28,6 +28,6 @@ const PrivateRoute = ({ isLogged, isAuthenticated, component: Component, history
 
 export { routes };
 
-const mapStateToProps = ({ login, auth }) => ({ isLogged: login.isLogged, isAuthenticated: auth.user.isAuthenticated });
+const mapStateToProps = ({ login, auth }) => ({ login, isAuthenticated: auth.user.isAuthenticated });
 const mapDispatchToProps = (dispatch) => bindActionCreators({ loadUser }, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(PrivateRoute);

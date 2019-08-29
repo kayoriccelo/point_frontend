@@ -6,7 +6,7 @@ import useStyles from './styles';
 import PrivateRoute, { routes } from '../../../routes';
 
 
-export const Content = ({ user }) => {
+export const Content = ({ user, history }) => {
     const classes = useStyles();
 
     return (
@@ -16,7 +16,7 @@ export const Content = ({ user }) => {
                 <Switch>
                     {routes.map(route => {
                         if (route.roles.indexOf(user.role) > -1) {
-                            return <PrivateRoute {...route} />
+                            return <PrivateRoute {...route} history={history} />
                         };
                         
                         return false

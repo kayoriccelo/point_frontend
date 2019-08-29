@@ -35,9 +35,7 @@ export function logout(history) {
     };
 };
 
-export const initialState = {
-    isLogged: false
-};
+export const initialState = {};
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
