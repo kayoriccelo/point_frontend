@@ -9,7 +9,7 @@ import { load } from './store/ducks';
 
 export const Dashboard = ({ data, load }) => {
     useEffect(() => {
-        load();
+        localStorage.getItem('access') && load();
     }, [load]);
 
     const options = {
