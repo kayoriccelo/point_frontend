@@ -27,11 +27,11 @@ export function authenticate(username, password, history) {
     };
 };
 
-export function logout(history) {
+export function logout() {
     return dispatch => {
         dispatch({ type: Types.LOGOUT, payload: false });
         localStorage.clear();
-        history.push('login');
+        window.location.href = '/login';
     };
 };
 
