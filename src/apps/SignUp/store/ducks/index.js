@@ -10,7 +10,7 @@ export const Types = {
 
 export function save(user, history) {
     return dispatch => {
-        return apiNotToken.post('api/user/', user).then(res => {
+        return apiNotToken.post('api/userallowany/', user).then(res => {
 
             dispatch({
                 type: Types.SIGNUP,
