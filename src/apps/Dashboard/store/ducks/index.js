@@ -1,8 +1,9 @@
 import api from '../../../../services/api';
+import { setTitle } from '../../../../components/Layout/Header/store/ducks';
 import { showMessage } from '../../../../components/Message/store/ducks';
 
 
-export { showMessage };
+export { showMessage, setTitle };
 
 export const Types = {
     LOAD: 'dashboad/LOAD',

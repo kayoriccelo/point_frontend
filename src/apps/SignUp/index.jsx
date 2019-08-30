@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Grid, Card, Button, Avatar } from '@material-ui/core';
+import { Grid, Card, Button } from '@material-ui/core';
 
 import { save, showMessage } from './store/ducks';
 import useStyles from './styles';
@@ -39,11 +39,7 @@ const SignUp = ({ save, history, showMessage }) => {
     return (
         <Grid container alignItems="center" justify="center" className={classes.root}>
             <Card className={classes.card}>
-                <div style={{ paddingBottom: 20 }}>
-                    <Avatar
-                        aria-label="Recipe"
-                        src="https://img.lovepik.com/element/40028/3809.png_860.png" />
-                </div>
+                <img height={60} alt="clock" src={require('./img/clock.png')} />
 
                 <b style={{ fontSize: 20, paddingBottom: 40 }}>Sign Up to Electronic Point</b>
 

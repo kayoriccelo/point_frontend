@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import clsx from 'clsx';
-import { Drawer, Divider, List, IconButton, Avatar, ListItem, ListItemText, ListItemIcon, ListSubheader, Collapse } from '@material-ui/core';
+import { Drawer, Divider, List, IconButton, ListItem, ListItemText, ListItemIcon, ListSubheader, Collapse } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { ExpandLess, ExpandMore } from '@material-ui/icons';
 
@@ -52,9 +52,9 @@ export const Sidebar = ({ history, user, openBar, setOpenBar }) => {
                 paper: clsx(classes.drawerPaper, !openBar && classes.drawerPaperClose),
             }}
         >
-            <div style={{ position: 'absolute', padding: '12px 0px 0px 8px' }}>
-                <Avatar aria-label="Recipe" className={classes.avatar}
-                    src="https://img.lovepik.com/element/40028/3809.png_860.png" />
+            <div style={{ position: 'absolute', padding: '12px 0px 0px 8px', display: 'flex' }}>
+                <img style={{ position: 'absolute', top: 5, left: 0 }} alt="clock" height={55} src={require('./img/clock.png')} />
+                <div style={{ fontWeight: 'bold', position: 'absolute', top: 24, left: 52 }}> Eletronic Point </div>
             </div>
             <div className={classes.toolbarIcon}>
                 <IconButton onClick={() => setOpenBar(false)}>

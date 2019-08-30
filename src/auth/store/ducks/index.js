@@ -10,7 +10,7 @@ export const Types = {
 
 export function loadUser(history) {
     return dispatch => {
-        return api.get('/api/usertoken/').then(res => {
+        return api.get('/api/user/').then(res => {
             dispatch({ type: Types.USER, payload: res.data.results[0] })
             history.push('dashboard');
         }, error => {

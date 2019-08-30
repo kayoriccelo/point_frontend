@@ -10,8 +10,6 @@ export function getListDefault(search, page, pageSize, model, type) {
     return dispatch => {
         return api.get(`api/${model}${search}`).then(res => {
             dispatch({ type, payload: res.data });
-        }, error => {
-            dispatch(showMessage({ open: true, message: 'Unable to list items.', variant: 'error' }));
         });
     };
 };
