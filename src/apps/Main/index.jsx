@@ -13,7 +13,7 @@ export default function Main({ history }) {
 
     return (
         <div className={classes.root}>
-            <Header history={history} />
+            <Header />
             <div className={classes.main}>
                 <Sidebar history={history} />
                 <Content history={history}/>

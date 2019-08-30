@@ -12,7 +12,7 @@ import { setOpenBar, logout } from './store/ducks';
 
 
 
-export const Header = ({ user, title, logout, openBar, setOpenBar, history }) => {
+export const Header = ({ user, title, logout, openBar, setOpenBar }) => {
     const classes = useStyles();
 
     return (
@@ -31,7 +31,7 @@ export const Header = ({ user, title, logout, openBar, setOpenBar, history }) =>
                 <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
                     {title}
                 </Typography>
-                <IconButton color="inherit" onClick={() => logout(history)}>
+                <IconButton color="inherit" onClick={() => logout()}>
                     <div style={{ fontSize: 14, paddingRight: 6 }}>{user.name}</div> <ExitToApp />
                 </IconButton>
             </Toolbar>

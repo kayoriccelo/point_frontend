@@ -7,6 +7,7 @@ import { Grid, Card, Button, Avatar } from '@material-ui/core';
 import { save, showMessage } from './store/ducks';
 import useStyles from './styles';
 import { InputText, InputPassword, Message } from '../../components';
+import { maskCpf } from '../../components/InputText/masks';
 
 
 const SignUp = ({ save, history, showMessage }) => {
@@ -60,7 +61,7 @@ const SignUp = ({ save, history, showMessage }) => {
                             <InputText label="Username *" value={values['username']} handleChange={handleChange('username')} />
                         </Grid>
                         <Grid item xs={12} sm={6} style={{ marginLeft: 4 }}>
-                            <InputText label="Cpf *" value={values['cpf']} handleChange={handleChange('cpf')} />
+                            <InputText label="Cpf *" maxLength={14} value={maskCpf(values['cpf'])} handleChange={handleChange('cpf')} />
                         </Grid>
                     </div>
                     <Grid item xs={12}>
