@@ -35,7 +35,7 @@ export const Form = ({ instance, load, update, setTitle, history }) => {
         >
             <InputText label="Cnpj" maxLength="18" value={maskCnpj(company.cnpj)} handleChange={handleChange('cnpj')} />
 
-            <InputText label="Business Name" maxLength="14" value={company.business_name} handleChange={handleChange('business_name')} />
+            <InputText label="Business Name" maxLength="140" value={company.business_name} handleChange={handleChange('business_name')} />
 
             <InputText label="Email" maxLength="100" value={company.email} handleChange={handleChange('email')} />
 

@@ -9,6 +9,7 @@ import headerReducer from '../components/Layout/Header/store/ducks';
 import messageReducer from '../components/Message/store/ducks';
 import paginationReducer from '../components/TablePagination/store/ducks';
 import dashboardReducer from '../apps/Dashboard/store/ducks';
+import profileReducer from '../apps/Profile/store/ducks';
 import companyReducer from '../apps/Company/store/ducks';
 import journeyReducer from '../apps/Journey/store/ducks';
 import employeeReducer from '../apps/Employee/store/ducks';
@@ -27,6 +28,7 @@ const reducers = combineReducers({
     message: messageReducer,
     pagination: paginationReducer,
     dashboard: dashboardReducer,
+    profile: profileReducer,
     company: companyReducer,
     journey: journeyReducer,
     employee: employeeReducer,

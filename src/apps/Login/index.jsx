@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Grid, Card, Button, Avatar } from '@material-ui/core';
+import { Grid, Card, Button } from '@material-ui/core';
 
 import { authenticate, showMessage } from './store/ducks';
 import useStyles from './styles';
@@ -28,13 +28,9 @@ const Login = ({ authenticate, history, showMessage }) => {
     return (
         <Grid container alignItems="center" justify="center" className={classes.root}>
             <Card className={classes.card}>
-                <div style={{ paddingBottom: 20 }}>
-                    <Avatar
-                        aria-label="Recipe"
-                        src="https://img.lovepik.com/element/40028/3809.png_860.png" />
-                </div>
-
-                <b style={{ fontSize: 20, paddingBottom: 40 }}>Login to Electronic Point</b>
+                <img height={60} alt="clock" src={require('./img/clock.png')} />
+                
+                <b style={{ fontSize: 20, paddingBottom: 40, paddingTop: 10 }}>Login to Electronic Point</b>
 
                 <div style={{ width: '70%' }}>
                     <InputText label="Username" value={values['username']} handleChange={handleChange('username')} />

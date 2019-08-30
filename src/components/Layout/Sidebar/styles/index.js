@@ -31,6 +31,9 @@ const useStyles = makeStyles(theme => ({
     nested: {
         paddingLeft: theme.spacing(4),
     },
+    avatar: {
+        height: 54
+    }
 }));
 
 export default useStyles;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { TableFooter, TableRow, TablePagination as TablePaginationUI } from '@material-ui/core';
@@ -14,6 +14,10 @@ export const TablePagination = ({ count, page, pageSize, setPages }) => {
     const handleChangeRowsPerPage = event => {
         setPages(0, parseInt(event.target.value, 10));
     };
+
+    useEffect(() => {
+        return () => setPages(0, pageSize);
+    }, [pageSize, setPages])
 
     return (
         <TableFooter>

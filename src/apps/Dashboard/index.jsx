@@ -4,13 +4,15 @@ import { bindActionCreators } from 'redux';
 import { Card, CardHeader, CircularProgress } from '@material-ui/core';
 import Chart from "react-google-charts";
 
-import { load } from './store/ducks';
+import { load, setTitle } from './store/ducks';
 
 
-export const Dashboard = ({ data, load }) => {
+export const Dashboard = ({ data, load, setTitle }) => {
     useEffect(() => {
         localStorage.getItem('access') && load();
-    }, [load]);
+
+        setTitle('Dashboard');
+    }, [load, setTitle]);
 
     const options = {
         legend: "none",
@@ -76,5 +78,5 @@ export const Dashboard = ({ data, load }) => {
 };
 
 const mapStateToProps = ({ dashboard }) => ({ data: dashboard.data });
-const mapDispatchToProps = (dispatch) => bindActionCreators({ load }, dispatch);
+const mapDispatchToProps = (dispatch) => bindActionCreators({ load, setTitle }, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

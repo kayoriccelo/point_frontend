@@ -1,4 +1,5 @@
 import Dashboard from '../apps/Dashboard';
+import { Profile } from '../apps/Profile';
 import { FormCompany } from '../apps/Company';
 import { ListJourney, FormJourney } from '../apps/Journey';
 import { ListEmployee, FormEmployee } from '../apps/Employee';
@@ -13,6 +14,13 @@ export const routes = [
         exact: true,
         path: '/dashboard',
         component: Dashboard,
+        roles: ['guest', 'admin']
+    },
+    {
+        key: 'profile',
+        exact: true,
+        path: '/profile',
+        component: Profile,
         roles: ['guest', 'admin']
     },
     {
