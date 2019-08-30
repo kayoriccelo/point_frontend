@@ -4,6 +4,7 @@ import { ListJourney, FormJourney } from '../apps/Journey';
 import { ListEmployee, FormEmployee } from '../apps/Employee';
 import { PointMarking } from '../apps/PointMarking';
 import { ListEmployeePoint, ConsultPoint } from '../apps/ConsultPoint';
+import { MyPoints } from '../apps/MyPoints';
 
 
 export const routes = [
@@ -62,6 +63,13 @@ export const routes = [
         path: '/consultpoint',
         component: ListEmployeePoint,
         roles: ['admin']
+    },
+    {
+        key: 'my-points',
+        exact: true,
+        path: '/mypoints',
+        component: MyPoints,
+        roles: ['guest']
     },
     {
         key: 'point-marking',

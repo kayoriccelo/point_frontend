@@ -39,6 +39,12 @@ export const menus = [
         roles: ['admin'],
     },
     {
+        title: 'My Points',
+        path: '/mypoints',
+        icon: (<Today style={{ color: '#24292e' }} />),
+        roles: ['guest'],
+    },
+    {
         title: 'Point Marking',
         path: '/pointmarking',
         icon: (<Fingerprint style={{ color: 't#24292eeal' }} />),
