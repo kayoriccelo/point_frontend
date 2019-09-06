@@ -7,7 +7,7 @@ import { routes } from './routes';
 import { loadUser } from '../auth/store/ducks';
 
 
-const PrivateRoute = ({ login, isAuthenticated, component: Component, history, loadUser, ...rest }) => {
+const PrivateRoute = ({ isAuthenticated, component: Component, history, loadUser, ...rest }) => {
     useEffect(() => {
         (localStorage.getItem('access') && !isAuthenticated) && loadUser(history)
     }, [isAuthenticated, history, loadUser]);
@@ -18,7 +18,7 @@ const PrivateRoute = ({ login, isAuthenticated, component: Component, history, l
                 ? (<Component {...props} />)
                 : (<Redirect
                     to={{
-                        pathname: "/login",
+                        pathname: "/signin",
                         state: { from: props.location }
                     }} />
                 )}

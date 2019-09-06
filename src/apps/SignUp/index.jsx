@@ -78,7 +78,7 @@ const SignUp = ({ save, history, showMessage }) => {
                 </Button>
 
                 <div style={{ fontSize: 12, marginTop: 8 }}>
-                    Already have an account? <Link to="/login" >Login</Link>
+                    Already have an account? <Link to="/signin" >Sign In</Link>
                 </div>
             </Card>
 

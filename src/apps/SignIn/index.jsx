@@ -9,13 +9,13 @@ import useStyles from './styles';
 import { InputText, InputPassword, Message } from '../../components';
 
 
-const Login = ({ authenticate, history, showMessage }) => {
+const SignIn = ({ authenticate, history, showMessage }) => {
     const classes = useStyles();
     const [values, setValue] = useState({ username: 'kayoriccelo', password: '123456', showPassword: false });
 
     const handleChange = prop => event => setValue({ ...values, [prop]: event.target.value });
 
-    const clickLogin = () => {
+    const clickSignIn = () => {
         const { username, password } = values;
 
         if (username !== '' && password !== '') {
@@ -28,9 +28,9 @@ const Login = ({ authenticate, history, showMessage }) => {
     return (
         <Grid container alignItems="center" justify="center" className={classes.root}>
             <Card className={classes.card}>
-                <img height={60} alt="clock" src={require('./img/clock.png')} />
+                <img height={90} alt="clock" src={require('./img/clock.png')} />
                 
-                <b style={{ fontSize: 20, paddingBottom: 40, paddingTop: 10 }}>Login to Electronic Point</b>
+                <b style={{ fontSize: 20, paddingBottom: 40, paddingTop: 10 }}>Sign In to Electronic Point</b>
 
                 <div style={{ width: '70%' }}>
                     <InputText label="Username" value={values['username']} handleChange={handleChange('username')} />
@@ -42,9 +42,9 @@ const Login = ({ authenticate, history, showMessage }) => {
                     variant="contained"
                     color="primary"
                     className={classes.button}
-                    onClick={() => clickLogin()}
+                    onClick={() => clickSignIn()}
                 >
-                    Login
+                    Sign In
                 </Button>
                 <div style={{ fontSize: 12, marginTop: 8 }}>
                     Not already have an account? <Link to="/signup" >Sign Up</Link>
@@ -59,4 +59,4 @@ const Login = ({ authenticate, history, showMessage }) => {
 
 const mapDispatchToProps = dispatch => bindActionCreators({ authenticate, showMessage }, dispatch);
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(null, mapDispatchToProps)(SignIn);

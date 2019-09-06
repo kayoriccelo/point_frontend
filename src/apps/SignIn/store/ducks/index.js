@@ -6,8 +6,8 @@ import { loadUser } from '../../../../auth/store/ducks';
 export { showMessage };
 
 export const Types = {
-    LOGIN: 'login/LOGIN',
-    LOGOUT: 'login/LOGOUT'
+    SIGNIN: 'signin/SIGNIN',
+    LOGOUT: 'signin/LOGOUT'
 };
 
 export function authenticate(username, password, history) {
@@ -31,7 +31,7 @@ export function logout() {
     return dispatch => {
         dispatch({ type: Types.LOGOUT, payload: false });
         localStorage.clear();
-        window.location.href = '/login';
+        window.location.href = '/signin';
     };
 };
 
@@ -39,7 +39,7 @@ export const initialState = {};
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
-        case Types.LOGIN:
+        case Types.SIGNIN:
             return { ...state, isLogged: action.payload };
 
         case Types.LOGOUT:
