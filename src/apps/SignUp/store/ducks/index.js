@@ -19,7 +19,7 @@ export function save(user, history) {
 
             dispatch(showMessage({ open: true, message: 'User successfully saved', variant: 'success' }));
 
-            history.push('/login');
+            history.push('/signin');
         }, error => {
             try {
                 dispatch(showMessage({ open: true, message: error.response.data.non_field_errors[0], variant: 'error' }));

@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 
-import loginReducer from '../apps/Login/store/ducks';
+import signinReducer from '../apps/SignIn/store/ducks';
 import signupReducer from '../apps/SignUp/store/ducks';
 import authReducer from '../auth/store/ducks';
 import sidebarReducer from '../components/Layout/Sidebar/store/ducks';
@@ -20,7 +20,7 @@ import mypointsReducer from '../apps/MyPoints/store/ducks';
 
 const reducers = combineReducers({
     router: routerReducer,
-    login: loginReducer,
+    signin: signinReducer,
     signup: signupReducer,
     auth: authReducer,
     sidebar: sidebarReducer,

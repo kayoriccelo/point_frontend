@@ -1,5 +1,5 @@
 import { setOpenBar } from '../../../Sidebar/store/ducks';
-import { logout } from '../../../../../apps/Login/store/ducks';
+import { logout } from '../../../../../apps/SignIn/store/ducks';
 
 
 export { setOpenBar, logout };
